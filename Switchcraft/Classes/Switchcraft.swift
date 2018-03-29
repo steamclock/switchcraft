@@ -18,24 +18,28 @@ public struct SwitchcraftEndpoint {
     }
 }
 
+public protocol SwitchcraftDelegate {
+    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: SwitchcraftEndpoint)
+}
+
 public class Switchcraft: UIViewController {
 
     private var alertController: UIAlertController?
     private var alertTitle: String?
     private var alertMessage: String?
-    private var selectionHandler: ((SwitchcraftEndpoint) -> Void)?
     private var allowCustom: Bool = false
     private(set) var endpoints: [SwitchcraftEndpoint] = []
 
+    public var delegate: SwitchcraftDelegate?
+
     private var textFieldDoneButton: UIAlertAction?
 
-    public convenience init(title: String?, message: String?, allowCustom: Bool = false, selectionHandler: @escaping (SwitchcraftEndpoint) -> Void) {
+    public convenience init(title: String?, message: String?, allowCustom: Bool = false) {
         self.init(nibName: nil, bundle: nil)
 
         alertTitle = title
         alertMessage = message
         self.allowCustom = allowCustom
-        self.selectionHandler = selectionHandler
 
         modalPresentationStyle = .overCurrentContext
     }
@@ -56,7 +60,7 @@ public class Switchcraft: UIViewController {
                     return
                 }
                 let newEndpoint = SwitchcraftEndpoint(title: nil, url: text)
-                self.selectionHandler?(newEndpoint)
+                self.selected(endpoint: newEndpoint)
             })
             alertController?.addAction(textFieldDoneButton!)
 
@@ -70,7 +74,7 @@ public class Switchcraft: UIViewController {
             alertController?.addAction(
                 // TODO: Better default value for title, can atleast strip http, etc
                 UIAlertAction(title: endpoint.title ?? endpoint.url, style: endpoint.style, handler: { [weak self] (action) in
-                    self?.selectionHandler?(endpoint)
+                    self?.selected(endpoint: endpoint)
                 })
             )
         }
@@ -93,12 +97,15 @@ public class Switchcraft: UIViewController {
         self.endpoints.append(contentsOf: endpoints)
     }
 
+    private func selected(endpoint: SwitchcraftEndpoint) {
+        delegate?.switchcraft(self, didChangeEndpoint: endpoint)
+    }
+
     @objc private func textFieldChanged(_ sender: UITextField) {
-        guard let text = sender.text else {
+        guard let url = URL(string: sender.text ?? "") else {
             return
         }
 
-        // TODO: should add a way to pass in a custom validation rule
-        textFieldDoneButton?.isEnabled = !text.isEmpty
+        self.textFieldDoneButton?.isEnabled = UIApplication.shared.canOpenURL(url)
     }
 }

@@ -26,11 +26,9 @@ class ViewController: UIViewController {
     }
 
     @objc private func showSwitchcraft() {
-        let switchcraft = Switchcraft(title: "Select Endpoint", message: nil, allowCustom: true, selectionHandler: { (endpoint) in
-            UserDefaults.standard.set(endpoint.url, forKey: "endpoint")
-            self.currentEndpointLabel.text = endpoint.url
-        })
+        let switchcraft = Switchcraft(title: "Select Endpoint", message: nil, allowCustom: true)
 
+        switchcraft.delegate = self
         switchcraft.addEndpoints([
             SwitchcraftEndpoint(title: "Google", url: "https://google.com"),
             SwitchcraftEndpoint(title: "Apple", url: "https://apple.com"),
@@ -43,6 +41,12 @@ class ViewController: UIViewController {
     @IBAction func visitEndpoint(_ sender: UIButton) {
         guard let urlString = UserDefaults.standard.string(forKey: "endpoint"), let url = URL(string: urlString) else { return }
         self.present(SFSafariViewController(url: url), animated: true, completion: nil)
+    }
+}
+
+extension ViewController: SwitchcraftDelegate {
+    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: SwitchcraftEndpoint) {
+        currentEndpointLabel.text = endpoint.url
     }
 }
 
