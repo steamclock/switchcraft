@@ -25,9 +25,6 @@ public protocol SwitchcraftDelegate {
 public class Switchcraft: UIViewController {
 
     private var alertController: UIAlertController?
-    private var alertTitle: String?
-    private var alertMessage: String?
-    private var allowCustom: Bool = false
     private var manager: SwitchcraftManager = SwitchcraftManager.shared
     private(set) var endpoints: [SwitchcraftEndpoint] = []
 
@@ -35,12 +32,9 @@ public class Switchcraft: UIViewController {
 
     private var textFieldDoneButton: UIAlertAction?
 
-    public convenience init(title: String?, message: String?, allowCustom: Bool = false, manager: SwitchcraftManager = SwitchcraftManager.shared) {
+    public convenience init(manager: SwitchcraftManager = SwitchcraftManager.shared) {
         self.init(nibName: nil, bundle: nil)
 
-        alertTitle = title
-        alertMessage = message
-        self.allowCustom = allowCustom
         self.manager = manager
 
         modalPresentationStyle = .overCurrentContext
@@ -54,9 +48,9 @@ public class Switchcraft: UIViewController {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: allowCustom ? .alert : .actionSheet)
+        alertController = UIAlertController(title: manager.alertTitle, message: manager.alertMessage, preferredStyle: manager.allowCustom ? .alert : .actionSheet)
 
-        if allowCustom {
+        if manager.allowCustom {
             textFieldDoneButton = UIAlertAction(title: manager.textFieldDoneTitle, style: .default, handler: { _ in
                 guard let textField = self.alertController?.textFields?.first, let text = textField.text else {
                     return

@@ -25,9 +25,15 @@ public class SwitchcraftManager {
         }
     }
 
+    public var alertTitle = "Select an Endpoint"
+
+    public var alertMessage: String? = nil
+
     public var textFieldPlaceholder = "Enter Value"
 
     public var textFieldDoneTitle = "Done"
 
     public var cancelTitle = "Cancel"
+
+    public var allowCustom = false
 }

@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
 
     @objc private func showSwitchcraft() {
-        let switchcraft = Switchcraft(title: "Select Endpoint", message: nil, allowCustom: true)
+        let switchcraft = Switchcraft()
 
         switchcraft.delegate = self
         switchcraft.addEndpoints([
@@ -49,9 +49,9 @@ class ViewController: UIViewController {
     @IBAction func otherEndpointPicker(_ sender: Any) {
         let manager = SwitchcraftManager()
         manager.defaultsKey = "otherEndpoint"
+        manager.alertMessage = "Current: " + (manager.endpoint ?? "")
 
-        otherSwitch = Switchcraft(title: "Select Endpoint", message: "Current: " + (manager.endpoint ?? ""), manager: manager)
-
+        otherSwitch = Switchcraft(manager: manager)
         otherSwitch?.delegate = self
         otherSwitch!.addEndpoints([
             SwitchcraftEndpoint(title: "Cats", url: "https://cats.com"),
