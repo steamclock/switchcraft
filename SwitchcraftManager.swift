@@ -12,6 +12,7 @@ public class SwitchcraftManager {
     private let defaults = UserDefaults.standard
 
     public static let shared = SwitchcraftManager()
+    public init() {}
 
     public var defaultsKey = "switchcraftEndpoint"
 

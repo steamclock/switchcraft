@@ -11,7 +11,10 @@ import Switchcraft
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var currentEndpointLabel: UILabel!
+    @IBOutlet private var currentEndpointLabel: UILabel!
+
+    private var otherSwitch: Switchcraft?
+    @IBOutlet private var otherEndpointLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,22 @@ class ViewController: UIViewController {
         self.present(switchcraft, animated: true)
     }
 
+    @IBAction func otherEndpointPicker(_ sender: Any) {
+        let manager = SwitchcraftManager()
+        manager.defaultsKey = "otherEndpoint"
+
+        otherSwitch = Switchcraft(title: "Select Endpoint", message: "Current: " + (manager.endpoint ?? ""), manager: manager)
+
+        otherSwitch?.delegate = self
+        otherSwitch!.addEndpoints([
+            SwitchcraftEndpoint(title: "Cats", url: "https://cats.com"),
+            SwitchcraftEndpoint(title: "Dogs", url: "https://dogs.com"),
+            SwitchcraftEndpoint(title: "Birbs", url: "https://birbs.com")
+            ])
+
+        self.present(otherSwitch!, animated: true)
+    }
+
     @IBAction func visitEndpoint(_ sender: UIButton) {
         guard let urlString = SwitchcraftManager.shared.endpoint, let url = URL(string: urlString) else { return }
         self.present(SFSafariViewController(url: url), animated: true, completion: nil)
@@ -46,7 +65,11 @@ class ViewController: UIViewController {
 
 extension ViewController: SwitchcraftDelegate {
     func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: SwitchcraftEndpoint) {
-        currentEndpointLabel.text = endpoint.url
+        if switchcraft == otherSwitch {
+            otherEndpointLabel.text = endpoint.url
+        } else {
+            currentEndpointLabel.text = endpoint.url
+        }
     }
 }
 
