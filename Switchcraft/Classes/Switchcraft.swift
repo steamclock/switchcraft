@@ -27,10 +27,9 @@ public class Switchcraft: UIViewController {
     private var alertController: UIAlertController?
     private var manager: SwitchcraftManager = SwitchcraftManager.shared
     private(set) var endpoints: [SwitchcraftEndpoint] = []
+    private var textFieldDoneButton: UIAlertAction?
 
     public var delegate: SwitchcraftDelegate?
-
-    private var textFieldDoneButton: UIAlertAction?
 
     public convenience init(manager: SwitchcraftManager = SwitchcraftManager.shared) {
         self.init(nibName: nil, bundle: nil)
