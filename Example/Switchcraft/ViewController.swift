@@ -21,7 +21,7 @@ class ViewController: UIViewController {
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showSwitchcraft))
         tapGesture.numberOfTapsRequired = 1 //2
-        tapGesture.numberOfTouchesRequired = 1//3
+        tapGesture.numberOfTouchesRequired = 1 //3
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
 

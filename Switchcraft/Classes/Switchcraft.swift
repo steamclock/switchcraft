@@ -28,7 +28,7 @@ public class Switchcraft: UIViewController {
     private var alertTitle: String?
     private var alertMessage: String?
     private var allowCustom: Bool = false
-    private var manager: SwitchcraftManager?
+    private var manager: SwitchcraftManager = SwitchcraftManager.shared
     private(set) var endpoints: [SwitchcraftEndpoint] = []
 
     public var delegate: SwitchcraftDelegate?
@@ -57,7 +57,7 @@ public class Switchcraft: UIViewController {
         alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: allowCustom ? .alert : .actionSheet)
 
         if allowCustom {
-            textFieldDoneButton = UIAlertAction(title: "Done", style: .default, handler: { _ in
+            textFieldDoneButton = UIAlertAction(title: manager.textFieldDoneTitle, style: .default, handler: { _ in
                 guard let textField = self.alertController?.textFields?.first, let text = textField.text else {
                     return
                 }
@@ -67,9 +67,9 @@ public class Switchcraft: UIViewController {
             alertController?.addAction(textFieldDoneButton!)
 
             alertController?.addTextField (configurationHandler: { textField in
-                textField.placeholder = "Enter value"
+                textField.placeholder = self.manager.textFieldPlaceholder
                 textField.addTarget(self, action: #selector(self.textFieldChanged), for: .editingChanged)
-                textField.text = self.manager?.endpoint
+                textField.text = self.manager.endpoint
             })
         }
 
@@ -82,7 +82,7 @@ public class Switchcraft: UIViewController {
             )
         }
 
-        alertController?.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController?.addAction(UIAlertAction(title: manager.cancelTitle, style: .cancel, handler: nil))
 
         present(alertController!, animated: true, completion: nil)
     }
@@ -101,11 +101,11 @@ public class Switchcraft: UIViewController {
     }
 
     public func endpoint() -> String? {
-        return manager?.endpoint
+        return manager.endpoint
     }
 
     private func selected(endpoint: SwitchcraftEndpoint) {
-        manager?.endpoint = endpoint.url
+        manager.endpoint = endpoint.url
         delegate?.switchcraft(self, didChangeEndpoint: endpoint)
     }
 

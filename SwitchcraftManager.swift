@@ -24,4 +24,10 @@ public class SwitchcraftManager {
             UserDefaults.standard.set(newValue, forKey: defaultsKey)
         }
     }
+
+    public var textFieldPlaceholder = "Enter Value"
+
+    public var textFieldDoneTitle = "Done"
+
+    public var cancelTitle = "Cancel"
 }
