@@ -41,6 +41,11 @@ class ViewController: UIViewController {
         self.present(switchcraft, animated: true)
     }
 
+    @IBAction func visitEndpoint(_ sender: UIButton) {
+        guard let urlString = SwitchcraftManager.shared.endpoint, let url = URL(string: urlString) else { return }
+        self.present(SFSafariViewController(url: url), animated: true, completion: nil)
+    }
+
     @IBAction func otherEndpointPicker(_ sender: Any) {
         let manager = SwitchcraftManager()
         manager.defaultsKey = "otherEndpoint"
@@ -55,11 +60,6 @@ class ViewController: UIViewController {
             ])
 
         self.present(otherSwitch!, animated: true)
-    }
-
-    @IBAction func visitEndpoint(_ sender: UIButton) {
-        guard let urlString = SwitchcraftManager.shared.endpoint, let url = URL(string: urlString) else { return }
-        self.present(SFSafariViewController(url: url), animated: true, completion: nil)
     }
 }
 
