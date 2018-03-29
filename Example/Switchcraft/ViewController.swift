@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
 
-        currentEndpointLabel.text = UserDefaults.standard.string(forKey: "endpoint")
+        currentEndpointLabel.text = SwitchcraftManager.shared.endpoint
     }
 
     @objc private func showSwitchcraft() {
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func visitEndpoint(_ sender: UIButton) {
-        guard let urlString = UserDefaults.standard.string(forKey: "endpoint"), let url = URL(string: urlString) else { return }
+        guard let urlString = SwitchcraftManager.shared.endpoint, let url = URL(string: urlString) else { return }
         self.present(SFSafariViewController(url: url), animated: true, completion: nil)
     }
 }

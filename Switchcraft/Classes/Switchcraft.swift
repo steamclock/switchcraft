@@ -28,18 +28,20 @@ public class Switchcraft: UIViewController {
     private var alertTitle: String?
     private var alertMessage: String?
     private var allowCustom: Bool = false
+    private var manager: SwitchcraftManager?
     private(set) var endpoints: [SwitchcraftEndpoint] = []
 
     public var delegate: SwitchcraftDelegate?
 
     private var textFieldDoneButton: UIAlertAction?
 
-    public convenience init(title: String?, message: String?, allowCustom: Bool = false) {
+    public convenience init(title: String?, message: String?, allowCustom: Bool = false, manager: SwitchcraftManager = SwitchcraftManager.shared) {
         self.init(nibName: nil, bundle: nil)
 
         alertTitle = title
         alertMessage = message
         self.allowCustom = allowCustom
+        self.manager = manager
 
         modalPresentationStyle = .overCurrentContext
     }
@@ -67,6 +69,7 @@ public class Switchcraft: UIViewController {
             alertController?.addTextField (configurationHandler: { textField in
                 textField.placeholder = "Enter value"
                 textField.addTarget(self, action: #selector(self.textFieldChanged), for: .editingChanged)
+                textField.text = self.manager?.endpoint
             })
         }
 
@@ -97,7 +100,12 @@ public class Switchcraft: UIViewController {
         self.endpoints.append(contentsOf: endpoints)
     }
 
+    public func endpoint() -> String? {
+        return manager?.endpoint
+    }
+
     private func selected(endpoint: SwitchcraftEndpoint) {
+        manager?.endpoint = endpoint.url
         delegate?.switchcraft(self, didChangeEndpoint: endpoint)
     }
 
