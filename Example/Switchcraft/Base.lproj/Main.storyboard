@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +21,39 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJU-a5-ia0">
+                                <rect key="frame" x="36" y="318" width="303" height="30"/>
+                                <state key="normal" title="Show Selected"/>
+                                <connections>
+                                    <action selector="visitEndpoint:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Ro-Ov-dGH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeK-fJ-lJF">
+                                <rect key="frame" x="36" y="647" width="303" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="HJU-a5-ia0" secondAttribute="trailing" constant="20" id="5YF-Ip-Ryk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jeK-fJ-lJF" secondAttribute="trailing" constant="20" id="7UU-cu-ZVA"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="jeK-fJ-lJF" secondAttribute="bottom" constant="20" id="cbH-Wp-Y1A"/>
+                            <constraint firstItem="HJU-a5-ia0" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="cra-dd-o5N"/>
+                            <constraint firstItem="HJU-a5-ia0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="faP-vU-ps9"/>
+                            <constraint firstItem="jeK-fJ-lJF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="jvN-Eg-Hj9"/>
+                            <constraint firstItem="HJU-a5-ia0" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="x2C-w3-8Jn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentEndpointLabel" destination="jeK-fJ-lJF" id="1Q4-eW-q4i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

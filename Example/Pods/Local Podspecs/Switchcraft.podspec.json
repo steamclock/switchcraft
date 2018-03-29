@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "summary": "A short description of Switchcraft.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/blensink192@gmail.com/Switchcraft",
+  "homepage": "https://github.com/steamclock/Switchcraft",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "blensink192@gmail.com": "blensink192@gmail.com"
+    "brendan@steamclock.com": "brendan@steamclock.com"
   },
   "source": {
-    "git": "https://github.com/blensink192@gmail.com/Switchcraft.git",
+    "git": "https://github.com/steamclock/Switchcraft.git",
     "tag": "0.1.0"
   },
   "platforms": {
