@@ -26,15 +26,15 @@ class ViewController: UIViewController {
     }
 
     @objc private func showSwitchcraft() {
-        let switchcraft = Switchcraft(title: "Select Endpoint", message: nil, allowCustom: true, selectionHandler: { (option) in
-            UserDefaults.standard.set(option.value, forKey: "endpoint")
-            self.currentEndpointLabel.text = option.value
+        let switchcraft = Switchcraft(title: "Select Endpoint", message: nil, allowCustom: true, selectionHandler: { (endpoint) in
+            UserDefaults.standard.set(endpoint.url, forKey: "endpoint")
+            self.currentEndpointLabel.text = endpoint.url
         })
 
-        switchcraft.addOptions([
-            SwitchcraftOption(title: "Google", value: "https://google.com"),
-            SwitchcraftOption(title: "Apple", value: "https://apple.com"),
-            SwitchcraftOption(title: "Amazon", value: "https://amazon.com")
+        switchcraft.addEndpoints([
+            SwitchcraftEndpoint(title: "Google", url: "https://google.com"),
+            SwitchcraftEndpoint(title: "Apple", url: "https://apple.com"),
+            SwitchcraftEndpoint(title: "Amazon", url: "https://amazon.com")
             ])
 
         self.present(switchcraft, animated: true)

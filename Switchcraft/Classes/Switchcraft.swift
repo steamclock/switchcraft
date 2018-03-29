@@ -6,14 +6,14 @@
 //  Copyright (c) 2018 Steamclock Software. All rights reserved.
 //
 
-public struct SwitchcraftOption {
+public struct SwitchcraftEndpoint {
     public let title: String?
-    public let value: String
+    public let url: String
     public let style: UIAlertActionStyle
 
-    public init(title: String?, value: String, style: UIAlertActionStyle = . default) {
+    public init(title: String?, url: String, style: UIAlertActionStyle = . default) {
         self.title = title
-        self.value = value
+        self.url = url
         self.style = style
     }
 }
@@ -23,13 +23,13 @@ public class Switchcraft: UIViewController {
     private var alertController: UIAlertController?
     private var alertTitle: String?
     private var alertMessage: String?
-    private var selectionHandler: ((SwitchcraftOption) -> Void)?
+    private var selectionHandler: ((SwitchcraftEndpoint) -> Void)?
     private var allowCustom: Bool = false
-    private(set) var options: [SwitchcraftOption] = []
+    private(set) var endpoints: [SwitchcraftEndpoint] = []
 
     private var textFieldDoneButton: UIAlertAction?
 
-    public convenience init(title: String?, message: String?, allowCustom: Bool = false, selectionHandler: @escaping (SwitchcraftOption) -> Void) {
+    public convenience init(title: String?, message: String?, allowCustom: Bool = false, selectionHandler: @escaping (SwitchcraftEndpoint) -> Void) {
         self.init(nibName: nil, bundle: nil)
 
         alertTitle = title
@@ -55,8 +55,8 @@ public class Switchcraft: UIViewController {
                 guard let textField = self.alertController?.textFields?.first, let text = textField.text else {
                     return
                 }
-                let newOption = SwitchcraftOption(title: nil, value: text)
-                self.selectionHandler?(newOption)
+                let newEndpoint = SwitchcraftEndpoint(title: nil, url: text)
+                self.selectionHandler?(newEndpoint)
             })
             alertController?.addAction(textFieldDoneButton!)
 
@@ -66,10 +66,11 @@ public class Switchcraft: UIViewController {
             })
         }
 
-        for option in options {
+        for endpoint in endpoints {
             alertController?.addAction(
-                UIAlertAction(title: option.title ?? option.value, style: option.style, handler: { [weak self] (action) in
-                    self?.selectionHandler?(option)
+                // TODO: Better default value for title, can atleast strip http, etc
+                UIAlertAction(title: endpoint.title ?? endpoint.url, style: endpoint.style, handler: { [weak self] (action) in
+                    self?.selectionHandler?(endpoint)
                 })
             )
         }
@@ -84,12 +85,12 @@ public class Switchcraft: UIViewController {
         super.dismiss(animated: animated, completion: completion)
     }
 
-    public func addOption(_ option: SwitchcraftOption) {
-        options.append(option)
+    public func addEndpoint(_ endpoint: SwitchcraftEndpoint) {
+        endpoints.append(endpoint)
     }
 
-    public func addOptions(_ options: [SwitchcraftOption]) {
-        self.options.append(contentsOf: options)
+    public func addEndpoints(_ endpoints: [SwitchcraftEndpoint]) {
+        self.endpoints.append(contentsOf: endpoints)
     }
 
     @objc private func textFieldChanged(_ sender: UITextField) {
