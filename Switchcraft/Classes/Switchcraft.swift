@@ -97,6 +97,7 @@ public class Switchcraft: UIViewController {
             return
         }
 
+        // TODO: should add a way to pass in a custom validation rule
         textFieldDoneButton?.isEnabled = !text.isEmpty
     }
 }
