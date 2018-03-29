@@ -1,0 +1,6 @@
+framework module Switchcraft {
+  umbrella header "Switchcraft-umbrella.h"
+
+  export *
+  module * { export * }
+}

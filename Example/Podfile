@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Switchcraft_Example' do
+  pod 'Switchcraft', :path => '../'
+
+  target 'Switchcraft_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

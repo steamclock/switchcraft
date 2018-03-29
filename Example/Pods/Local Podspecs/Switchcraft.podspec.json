@@ -1,0 +1,22 @@
+{
+  "name": "Switchcraft",
+  "version": "0.1.0",
+  "summary": "A short description of Switchcraft.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/blensink192@gmail.com/Switchcraft",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "blensink192@gmail.com": "blensink192@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/blensink192@gmail.com/Switchcraft.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Switchcraft/Classes/**/*"
+}
