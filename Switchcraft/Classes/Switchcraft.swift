@@ -7,11 +7,11 @@
 //
 
 public struct SwitchcraftOption {
-    public let title: String
+    public let title: String?
     public let value: String
     public let style: UIAlertActionStyle
 
-    public init(title: String, value: String, style: UIAlertActionStyle = . default) {
+    public init(title: String?, value: String, style: UIAlertActionStyle = . default) {
         self.title = title
         self.value = value
         self.style = style
@@ -24,13 +24,17 @@ public class Switchcraft: UIViewController {
     private var alertTitle: String?
     private var alertMessage: String?
     private var selectionHandler: ((SwitchcraftOption) -> Void)?
+    private var allowCustom: Bool = false
     private(set) var options: [SwitchcraftOption] = []
 
-    public convenience init(title: String?, message: String?, selectionHandler: @escaping (SwitchcraftOption) -> Void) {
+    private var textFieldDoneButton: UIAlertAction?
+
+    public convenience init(title: String?, message: String?, allowCustom: Bool = false, selectionHandler: @escaping (SwitchcraftOption) -> Void) {
         self.init(nibName: nil, bundle: nil)
 
         alertTitle = title
         alertMessage = message
+        self.allowCustom = allowCustom
         self.selectionHandler = selectionHandler
 
         modalPresentationStyle = .overCurrentContext
@@ -44,11 +48,27 @@ public class Switchcraft: UIViewController {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .actionSheet)
+        alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: allowCustom ? .alert : .actionSheet)
+
+        if allowCustom {
+            textFieldDoneButton = UIAlertAction(title: "Done", style: .default, handler: { _ in
+                guard let textField = self.alertController?.textFields?.first, let text = textField.text else {
+                    return
+                }
+                let newOption = SwitchcraftOption(title: nil, value: text)
+                self.selectionHandler?(newOption)
+            })
+            alertController?.addAction(textFieldDoneButton!)
+
+            alertController?.addTextField (configurationHandler: { textField in
+                textField.placeholder = "Enter value"
+                textField.addTarget(self, action: #selector(self.textFieldChanged), for: .editingChanged)
+            })
+        }
 
         for option in options {
             alertController?.addAction(
-                UIAlertAction(title: option.title, style: option.style, handler: { [weak self] (action) in
+                UIAlertAction(title: option.title ?? option.value, style: option.style, handler: { [weak self] (action) in
                     self?.selectionHandler?(option)
                 })
             )
@@ -70,5 +90,13 @@ public class Switchcraft: UIViewController {
 
     public func addOptions(_ options: [SwitchcraftOption]) {
         self.options.append(contentsOf: options)
+    }
+
+    @objc private func textFieldChanged(_ sender: UITextField) {
+        guard let text = sender.text else {
+            return
+        }
+
+        textFieldDoneButton?.isEnabled = !text.isEmpty
     }
 }

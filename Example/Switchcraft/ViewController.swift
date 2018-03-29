@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
 
     @objc private func showSwitchcraft() {
-        let switchcraft = Switchcraft(title: "Select Endpoint", message: nil, selectionHandler: { (option) in
+        let switchcraft = Switchcraft(title: "Select Endpoint", message: nil, allowCustom: true, selectionHandler: { (option) in
             UserDefaults.standard.set(option.value, forKey: "endpoint")
             self.currentEndpointLabel.text = option.value
         })
