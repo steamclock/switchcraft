@@ -13,9 +13,6 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet private var currentEndpointLabel: UILabel!
 
-    private var otherSwitch: Switchcraft?
-    @IBOutlet private var otherEndpointLabel: UILabel!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,11 +28,9 @@ class ViewController: UIViewController {
     @objc private func showSwitchcraft() {
         let switchcraft = Switchcraft()
 
-        let testEndpoint = SwitchcraftEndpoint(title: "Gooagle", url: "https://gooagle.com")
         switchcraft.delegate = self
 
         switchcraft.addEndpoints([
-            testEndpoint,
             SwitchcraftEndpoint(title: "Google", url: "https://google.com"),
             SwitchcraftEndpoint(title: "Apple", url: "https://apple.com"),
             SwitchcraftEndpoint(title: "Amazon", url: "https://amazon.com")
@@ -48,31 +43,11 @@ class ViewController: UIViewController {
         guard let urlString = SwitchcraftManager.shared.endpoint, let url = URL(string: urlString) else { return }
         self.present(SFSafariViewController(url: url), animated: true, completion: nil)
     }
-
-    @IBAction func otherEndpointPicker(_ sender: Any) {
-        let manager = SwitchcraftManager()
-        manager.defaultsKey = "otherEndpoint"
-        manager.alertMessage = "Current: " + (manager.endpoint ?? "")
-
-        otherSwitch = Switchcraft(manager: manager)
-        otherSwitch?.delegate = self
-        otherSwitch!.addEndpoints([
-            SwitchcraftEndpoint(title: "Cats", url: "https://cats.com"),
-            SwitchcraftEndpoint(title: "Dogs", url: "https://dogs.com"),
-            SwitchcraftEndpoint(title: "Birbs", url: "https://birbs.com")
-            ])
-
-        self.present(otherSwitch!, animated: true)
-    }
 }
 
 extension ViewController: SwitchcraftDelegate {
     func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: SwitchcraftEndpoint) {
-        if switchcraft == otherSwitch {
-            otherEndpointLabel.text = endpoint.url
-        } else {
-            currentEndpointLabel.text = endpoint.url
-        }
+        currentEndpointLabel.text = endpoint.url
     }
 }
 

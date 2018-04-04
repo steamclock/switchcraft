@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,32 +35,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1do-ZW-XGv">
-                                <rect key="frame" x="36" y="60" width="303" height="30"/>
-                                <state key="normal" title="Pick an animal"/>
-                                <connections>
-                                    <action selector="otherEndpointPicker:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j9G-RC-s3z"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOQ-84-sNA">
-                                <rect key="frame" x="36" y="110" width="303" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1do-ZW-XGv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="46v-mp-Dl1"/>
-                            <constraint firstItem="sOQ-84-sNA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="49e-Sg-M47"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HJU-a5-ia0" secondAttribute="trailing" constant="20" id="5YF-Ip-Ryk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jeK-fJ-lJF" secondAttribute="trailing" constant="20" id="7UU-cu-ZVA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sOQ-84-sNA" secondAttribute="trailing" constant="20" id="L0k-qi-gZ9"/>
-                            <constraint firstItem="1do-ZW-XGv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="M7D-Te-327"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="jeK-fJ-lJF" secondAttribute="bottom" constant="20" id="cbH-Wp-Y1A"/>
                             <constraint firstItem="HJU-a5-ia0" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="cra-dd-o5N"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1do-ZW-XGv" secondAttribute="trailing" constant="20" id="dyH-bS-g0G"/>
-                            <constraint firstItem="sOQ-84-sNA" firstAttribute="top" secondItem="1do-ZW-XGv" secondAttribute="bottom" constant="20" id="ebb-yE-WpG"/>
                             <constraint firstItem="HJU-a5-ia0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="faP-vU-ps9"/>
                             <constraint firstItem="jeK-fJ-lJF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="jvN-Eg-Hj9"/>
                             <constraint firstItem="HJU-a5-ia0" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="x2C-w3-8Jn"/>
@@ -68,7 +49,6 @@
                     </view>
                     <connections>
                         <outlet property="currentEndpointLabel" destination="jeK-fJ-lJF" id="1Q4-eW-q4i"/>
-                        <outlet property="otherEndpointLabel" destination="sOQ-84-sNA" id="ofl-h1-FSK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
