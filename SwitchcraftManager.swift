@@ -9,6 +9,9 @@ import Foundation
 
 public class SwitchcraftManager {
 
+    /**
+     * Private shortcut to UserDefaults
+     */
     private let defaults = UserDefaults.standard
 
     /**
