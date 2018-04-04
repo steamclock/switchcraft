@@ -22,10 +22,18 @@ public class SwitchcraftManager {
      */
     public static let shared = SwitchcraftManager()
 
+    private init() {}
+
     /**
      * Create a new SwitchcraftManager instance.
      */
-    public init() {}
+    public init(key: String) {
+        guard key != defaultsKey else {
+            fatalError("Can't create a new SwitchcraftManager with the default key name.")
+        }
+
+        defaultsKey = key
+    }
 
     /**
      * The currently selected endpoint.
