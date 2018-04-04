@@ -26,15 +26,12 @@ class ViewController: UIViewController {
     }
 
     @objc private func showSwitchcraft() {
-        let switchcraft = Switchcraft()
-
-        switchcraft.delegate = self
-
-        switchcraft.addEndpoints([
+        let switchcraft = Switchcraft(endpoints: [
             SwitchcraftEndpoint(title: "Google", url: "https://google.com"),
             SwitchcraftEndpoint(title: "Apple", url: "https://apple.com"),
             SwitchcraftEndpoint(title: "Amazon", url: "https://amazon.com")
             ])
+        switchcraft.delegate = self
 
         self.present(switchcraft, animated: true)
     }

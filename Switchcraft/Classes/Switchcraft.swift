@@ -38,11 +38,11 @@ public class Switchcraft: UIViewController {
      *
      * - parameter manager: Assign a new `SwitchcraftManager` with configuration options. Default is the singleton instance.
      */
-    public convenience init(manager: SwitchcraftManager = SwitchcraftManager.shared) {
+    public convenience init(manager: SwitchcraftManager = SwitchcraftManager.shared, endpoints: [SwitchcraftEndpoint]) {
         self.init(nibName: nil, bundle: nil)
 
         self.manager = manager
-
+        self.endpoints = endpoints
         modalPresentationStyle = .overCurrentContext
     }
 
@@ -50,6 +50,7 @@ public class Switchcraft: UIViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .clear
     }
 
