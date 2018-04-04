@@ -7,25 +7,28 @@
 
 import Foundation
 
+/**
+ * `SwitchcraftManager` handles config options for Switchcraft instances. Backed by a singleton instance.
+ */
 public class SwitchcraftManager {
 
     /**
-     * Private shortcut to UserDefaults
+     * Private shortcut to UserDefaults.
      */
     private let defaults = UserDefaults.standard
 
     /**
-     * Use the default global SwitchcraftManager Instance
+     * Use the default singleton instance.
      */
     public static let shared = SwitchcraftManager()
 
     /**
-     * Create a new SwitchcraftManager instance
+     * Create a new SwitchcraftManager instance.
      */
     public init() {}
 
     /**
-     * The currently selected endpoint
+     * The currently selected endpoint.
      */
     public var endpoint: String? {
         // TODO: Consider adding a private get/setter for userdefaults
@@ -40,7 +43,7 @@ public class SwitchcraftManager {
 
     /**
      * The location in UserDefaults.standard where the endpoint is stored.
-     * Default is "switchcraftEndpoint"
+     * Default is "switchcraftEndpoint".
      */
     public var defaultsKey = "switchcraftEndpoint"
 

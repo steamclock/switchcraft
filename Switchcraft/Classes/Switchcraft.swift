@@ -6,34 +6,6 @@
 //  Copyright (c) 2018 Steamclock Software. All rights reserved.
 //
 
-/**
- * Represents an endpoint that can be chosen using the `Switchcraft` picker
- */
-public struct SwitchcraftEndpoint {
-
-    /// A title that will be shown instead of the url in the UIAlertController. Defaults to the url
-    public let title: String?
-
-    /// The URL associated with the endpoint.
-    public let url: String
-
-    /// The title will be displayed with this style. Default is .default.
-    public let style: UIAlertActionStyle
-
-    /**
-     * Create a new endpoint.
-     *
-     * - parameter title: An optional title to show instead of the url when selecting an endpoint.
-     * - parameter url: The url to save and return when chosen
-     * - parameter style: The style of cell to display in the UIAlertController.
-     */
-    public init(title: String?, url: String, style: UIAlertActionStyle = . default) {
-        self.title = title
-        self.url = url
-        self.style = style
-    }
-}
-
 /// Protocol to monitor changes to the selected endpoint
 public protocol SwitchcraftDelegate {
     func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: SwitchcraftEndpoint)
@@ -51,6 +23,21 @@ public class Switchcraft: UIViewController {
 
     public var delegate: SwitchcraftDelegate?
 
+    /**
+     * Get the current selected endpoint.
+     * Defaults to getting the endpoint stored in the singleton SwitchcraftManager.
+     */
+    public var endpoint: String? {
+        return manager.endpoint
+    }
+
+    // MARK: Initializers
+
+    /**
+     * Create a new Switchcraft instance
+     *
+     * - parameter manager: Assign a new `SwitchcraftManager` with configuration options. Default is the singleton instance.
+     */
     public convenience init(manager: SwitchcraftManager = SwitchcraftManager.shared) {
         self.init(nibName: nil, bundle: nil)
 
@@ -58,6 +45,8 @@ public class Switchcraft: UIViewController {
 
         modalPresentationStyle = .overCurrentContext
     }
+
+    // MARK: View Lifecycle
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -100,22 +89,50 @@ public class Switchcraft: UIViewController {
         present(alertController!, animated: true, completion: nil)
     }
 
+    // MARK: Public Functions
+
     override public func dismiss(animated: Bool, completion: (() -> Void)? = nil) {
         alertController?.dismiss(animated: animated, completion: nil)
         super.dismiss(animated: animated, completion: completion)
     }
 
+    /**
+     * Add a new endpoint to the manager to display as an option.
+     * This endpoint is appended to the current list of endpoints.
+     *
+     * - parameter endpoint: The endpoint to add
+     */
     public func addEndpoint(_ endpoint: SwitchcraftEndpoint) {
         endpoints.append(endpoint)
     }
 
+    /**
+     * Add a set of new endpoints to the manager to display as an option.
+     * New endpoints are appended to the list of current endpoints.
+     *
+     * - parameter endpoint: The endpoint to add
+     */
     public func addEndpoints(_ endpoints: [SwitchcraftEndpoint]) {
         self.endpoints.append(contentsOf: endpoints)
     }
 
-    public func endpoint() -> String? {
-        return manager.endpoint
+    /**
+     * Clears a given endpoint from the current list.
+     *
+     * - return: The endpoint if it was removed, otherwise `nil`.
+     */
+    public func removeEndpoint(_ endpoint: SwitchcraftEndpoint) -> SwitchcraftEndpoint? {
+        return endpoints.index(of: endpoint).map { endpoints.remove(at: $0) }
     }
+
+    /**
+     * Clear the current list of endpoints.
+     */
+    public func clearEndpoints() {
+        self.endpoints.removeAll()
+    }
+
+    // MARK: Helper Functions
 
     private func selected(endpoint: SwitchcraftEndpoint) {
         manager.endpoint = endpoint.url

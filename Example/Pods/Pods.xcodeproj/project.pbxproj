@@ -15,7 +15,8 @@
 		89B85C638896FD676655D494FA0691B2 /* Pods-Switchcraft_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CAACE1FD2DE0D354DEACD675CA412FDF /* Pods-Switchcraft_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A00B3EA2C448667428F33C1E287A80E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		AD7CFEAB85056E098D5E64C44508D619 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		B3C4D217206D83880088A5B5 /* SwitchcraftManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D215206D836D0088A5B5 /* SwitchcraftManager.swift */; };
+		B3407CF920754496008749A9 /* SwitchcraftEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8FA702075442E001F2894 /* SwitchcraftEndpoint.swift */; };
+		B3407CFA20754497008749A9 /* SwitchcraftManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8FA712075442E001F2894 /* SwitchcraftManager.swift */; };
 		E2672F01663F610D2BD06239DE49EF26 /* Switchcraft-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62CCC5BE6A86CD7ADBC2EDF6D2BBA272 /* Switchcraft-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF3B001AB4F753E2EFBBED2434D93111 /* Switchcraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24734A110B9EAB32B8CD97FA02E3B148 /* Switchcraft.swift */; };
 /* End PBXBuildFile section */
@@ -53,7 +54,8 @@
 		A7D851122981F8244602EB9F0D78CA06 /* Pods_Switchcraft_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Switchcraft_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A833D4624F36F7CA366B7A876696A10C /* Pods-Switchcraft_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Switchcraft_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AEBB0E31D564944AD2374886693412DF /* Pods-Switchcraft_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Switchcraft_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B3C4D215206D836D0088A5B5 /* SwitchcraftManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchcraftManager.swift; sourceTree = "<group>"; };
+		B3A8FA702075442E001F2894 /* SwitchcraftEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchcraftEndpoint.swift; sourceTree = "<group>"; };
+		B3A8FA712075442E001F2894 /* SwitchcraftManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchcraftManager.swift; sourceTree = "<group>"; };
 		BB65173926661F8DA3D56DCBB6B00A83 /* Pods-Switchcraft_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Switchcraft_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C7998D99BBDDA77DD1EFABDFE20C69F1 /* Pods-Switchcraft_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Switchcraft_Tests.modulemap"; sourceTree = "<group>"; };
 		CAACE1FD2DE0D354DEACD675CA412FDF /* Pods-Switchcraft_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Switchcraft_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -144,6 +146,8 @@
 		94712339336298F02D0973903474E824 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3A8FA712075442E001F2894 /* SwitchcraftManager.swift */,
+				B3A8FA702075442E001F2894 /* SwitchcraftEndpoint.swift */,
 				4E17C34492999386B673318D285A2127 /* Info.plist */,
 				3FBE1A0EAE2ACC54B304F687651064AB /* Switchcraft.modulemap */,
 				89F43820E7E6688206BF018F6DBA719E /* Switchcraft.xcconfig */,
@@ -194,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				24734A110B9EAB32B8CD97FA02E3B148 /* Switchcraft.swift */,
-				B3C4D215206D836D0088A5B5 /* SwitchcraftManager.swift */,
 				94712339336298F02D0973903474E824 /* Support Files */,
 			);
 			name = Switchcraft;
@@ -301,7 +304,7 @@
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					E00B124107D11889CC0F42E62AE4A0A7 = {
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -337,9 +340,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3407CFA20754497008749A9 /* SwitchcraftManager.swift in Sources */,
+				B3407CF920754496008749A9 /* SwitchcraftEndpoint.swift in Sources */,
 				0235F3C99FDB2B6A97338F57AB79B8D8 /* Switchcraft-dummy.m in Sources */,
 				EF3B001AB4F753E2EFBBED2434D93111 /* Switchcraft.swift in Sources */,
-				B3C4D217206D83880088A5B5 /* SwitchcraftManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
