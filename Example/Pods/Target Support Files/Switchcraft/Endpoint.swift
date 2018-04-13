@@ -14,22 +14,17 @@ public struct Endpoint {
     public let title: String?
 
     /// The URL associated with the endpoint.
-    public let url: String
-
-    /// The title will be displayed with this style. Default is .default.
-    public let style: UIAlertActionStyle
+    public let url: URL
 
     /**
      * Create a new endpoint.
      *
      * - parameter title: An optional title to show instead of the url when selecting an endpoint.
      * - parameter url: The url to save and return when chosen
-     * - parameter style: The style of cell to display in the UIAlertController.
      */
-    public init(title: String?, url: String, style: UIAlertActionStyle = . default) {
+    public init(title: String?, url: URL) {
         self.title = title
         self.url = url
-        self.style = style
     }
 }
 
