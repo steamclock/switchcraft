@@ -8,12 +8,16 @@
 /**
  * Represents an endpoint that can be chosen using the `Switchcraft` picker
  */
-public struct Endpoint {
+public struct Endpoint: Codable {
 
-    /// A title that will be shown instead of the url in the UIAlertController. Defaults to the url
+    /**
+     * A title that will be shown instead of the url in the UIAlertController. Defaults to the url
+     */
     public let title: String?
 
-    /// The URL associated with the endpoint.
+    /**
+     * The URL associated with the endpoint.
+     */
     public let url: URL
 
     /**

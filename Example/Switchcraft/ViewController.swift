@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func visitEndpoint(_ sender: UIButton) {
-        guard let url = Switchcraft.shared.endpoint else { return }
-        self.present(SFSafariViewController(url: url), animated: true, completion: nil)
+        guard let endpoint = Switchcraft.shared.endpoint else { return }
+        self.present(SFSafariViewController(url: endpoint.url), animated: true, completion: nil)
     }
 }

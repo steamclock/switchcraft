@@ -7,6 +7,10 @@
 //
 //
 
+public protocol SwitchcraftDelegate: AnyObject {
+    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpointTo newEndpoint: Endpoint)
+}
+
 public class Switchcraft {
     // TODO: I'm not sure this is the best way to do this (with a setup()) you have to call to get the singleton going, but I'm not sure if there's another way :/
     public static let shared = Switchcraft()
@@ -25,26 +29,41 @@ public class Switchcraft {
      */
     private var tapAction: (() -> Void)?
 
+    /**
+     * A reference the the action sheet text field submit button.
+     * Needed to toggle enabled for the button as text is entered.
+     */
     private var textFieldDoneButton: UIAlertAction?
-
-    // MARK: Public Declarations
 
     /**
      * User set configuration options. Must be set before using `Switchcraft`.
      */
-    public var config: Config!
+    private var config: Config!
+
+    // MARK: Public Declarations
+
+    /**
+     * Delegate to receive updates for changes to the endpoint
+     */
+    public var delegate: SwitchcraftDelegate?
 
     /**
      * The currently selected endpoint.
      */
-    public var endpoint: URL? {
+    public var endpoint: Endpoint? {
         // TODO: Consider adding a private get/setter for userdefaults
         //         and store the value so we don't need to keep hitting defaults
         get {
-            return UserDefaults.standard.url(forKey: config.defaultsKey)
+            if let data = UserDefaults.standard.data(forKey: config.defaultsKey),
+                    let endpoint = try? JSONDecoder().decode(Endpoint.self, from: data) {
+                return endpoint
+            }
+            return nil
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: config.defaultsKey)
+            if let encoded = try? JSONEncoder().encode(newValue) {
+                UserDefaults.standard.set(encoded, forKey: config.defaultsKey)
+            }
         }
     }
 
@@ -53,7 +72,7 @@ public class Switchcraft {
      */
     // TODO: this could be named better
     public var currentEndpointIsDefault: Bool {
-        return endpoint == config.endpoints[config.defaultEndpointIndex].url
+        return endpoint == config.endpoints[config.defaultEndpointIndex]
     }
 
     /**
@@ -86,7 +105,7 @@ public class Switchcraft {
 
         // If there's no endpoint saved, store the default
         if endpoint == nil {
-            endpoint = endpoints[config.defaultEndpointIndex].url
+            endpoint = endpoints[config.defaultEndpointIndex]
         }
     }
 
@@ -139,8 +158,7 @@ public class Switchcraft {
 
         var alertTitle = config.alertTitle
         if let currentEndpoint = endpoint {
-            // TODO: We probably want to change this to use the title instead of the url if possible
-            alertTitle += "\nCurrent Endpoint: \(currentEndpoint)"
+            alertTitle += "\nCurrent Endpoint: \(currentEndpoint.title ?? currentEndpoint.url.absoluteString)"
         }
 
         let alertController = UIAlertController(
@@ -167,7 +185,7 @@ public class Switchcraft {
                     guard let url = URL(string: text) else {
                         return
                     }
-                    self.endpoint = url
+                    self.selected(endpoint: Endpoint(title: "Custom URL", url: url))
                 }
             )
             alertController.addAction(textFieldDoneButton!)
@@ -175,14 +193,14 @@ public class Switchcraft {
             alertController.addTextField (configurationHandler: { textField in
                 textField.placeholder = self.config.textFieldPlaceholder
                 textField.addTarget(self, action: #selector(self.textFieldChanged), for: .editingChanged)
-                textField.text = self.endpoint?.absoluteString
+                textField.text = self.endpoint?.url.absoluteString
             })
         }
 
         for endpoint in config.endpoints {
             // Don't show the currently selected endpoint as an option
             // TODO: I suspect this will be confusing and need to be changed.
-            guard endpoint.url != self.endpoint else { continue }
+            guard endpoint != self.endpoint else { continue }
 
             alertController.addAction(
                 // TODO: Better default value for title, can atleast strip http, etc
@@ -190,7 +208,7 @@ public class Switchcraft {
                     title: endpoint.title ?? endpoint.url.absoluteString,
                     style: .default,
                     handler: { [weak self] (action) in
-                        self?.endpoint = endpoint.url
+                        self?.selected(endpoint: endpoint)
                         viewController.dismiss(animated: false, completion: nil)
                     }
                 )
@@ -202,7 +220,7 @@ public class Switchcraft {
         viewController.present(alertController, animated: true, completion: nil)
     }
 
-    // MARK: Private Helpers
+    // MARK: Private Actions And Helpers
 
     @objc private func tapHandler(_ sender: UITapGestureRecognizer) {
         tapAction?()
@@ -230,5 +248,10 @@ public class Switchcraft {
         let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
         let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
         return predicate.evaluate(with: string)
+    }
+
+    private func selected(endpoint: Endpoint) {
+        delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
+        self.endpoint = endpoint
     }
 }
