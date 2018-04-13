@@ -105,7 +105,7 @@ public class Switchcraft {
 
         // If there's no endpoint saved, store the default
         if endpoint == nil {
-            endpoint = endpoints[config.defaultEndpointIndex]
+            selected(endpoint: endpoints[config.defaultEndpointIndex])
         }
     }
 
@@ -126,6 +126,10 @@ public class Switchcraft {
         tapAction = { self.display(from: viewController) }
 
         viewController.view.addGestureRecognizer(defaultGesture)
+
+        if let currentEndpoint = endpoint {
+            delegate?.switchcraft(self, didChangeEndpointTo: currentEndpoint)
+        }
     }
 
     /**
@@ -158,7 +162,7 @@ public class Switchcraft {
 
         var alertTitle = config.alertTitle
         if let currentEndpoint = endpoint {
-            alertTitle += "\nCurrent Endpoint: \(currentEndpoint.title ?? currentEndpoint.url.absoluteString)"
+            alertTitle += "\nCurrent Endpoint: \(currentEndpoint.name)"
         }
 
         let alertController = UIAlertController(
@@ -205,7 +209,7 @@ public class Switchcraft {
             alertController.addAction(
                 // TODO: Better default value for title, can atleast strip http, etc
                 UIAlertAction(
-                    title: endpoint.title ?? endpoint.url.absoluteString,
+                    title: endpoint.name,
                     style: .default,
                     handler: { [weak self] (action) in
                         self?.selected(endpoint: endpoint)

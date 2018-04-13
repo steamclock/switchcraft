@@ -21,6 +21,13 @@ public struct Endpoint: Codable {
     public let url: URL
 
     /**
+     * Helper variable to show a user-facing name for the endpoint
+     */
+    public var name: String {
+        return title ?? url.absoluteString
+    }
+
+    /**
      * Create a new endpoint.
      *
      * - parameter title: An optional title to show instead of the url when selecting an endpoint.
