@@ -8,7 +8,7 @@
 
 /// Protocol to monitor changes to the selected endpoint
 public protocol SwitchcraftDelegate {
-    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: SwitchcraftEndpoint)
+    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: Endpoint)
 }
 
 public class Switchcraft: UIViewController {
@@ -17,7 +17,7 @@ public class Switchcraft: UIViewController {
     
     private var manager: SwitchcraftManager = SwitchcraftManager.shared
 
-    private(set) var endpoints: [SwitchcraftEndpoint] = []
+    private(set) var endpoints: [Endpoint] = []
 
     private var textFieldDoneButton: UIAlertAction?
 
@@ -38,7 +38,7 @@ public class Switchcraft: UIViewController {
      *
      * - parameter manager: Assign a new `SwitchcraftManager` with configuration options. Default is the singleton instance.
      */
-    public convenience init(manager: SwitchcraftManager = SwitchcraftManager.shared, endpoints: [SwitchcraftEndpoint]) {
+    public convenience init(manager: SwitchcraftManager = SwitchcraftManager.shared, endpoints: [Endpoint]) {
         self.init(nibName: nil, bundle: nil)
 
         self.manager = manager
@@ -64,7 +64,7 @@ public class Switchcraft: UIViewController {
                 guard let textField = self.alertController?.textFields?.first, let text = textField.text else {
                     return
                 }
-                let newEndpoint = SwitchcraftEndpoint(title: nil, url: text)
+                let newEndpoint = Endpoint(title: nil, url: text)
                 self.selected(endpoint: newEndpoint)
             })
             alertController?.addAction(textFieldDoneButton!)
@@ -103,7 +103,7 @@ public class Switchcraft: UIViewController {
      *
      * - parameter endpoint: The endpoint to add
      */
-    public func addEndpoint(_ endpoint: SwitchcraftEndpoint) {
+    public func addEndpoint(_ endpoint: Endpoint) {
         endpoints.append(endpoint)
     }
 
@@ -113,7 +113,7 @@ public class Switchcraft: UIViewController {
      *
      * - parameter endpoint: The endpoint to add
      */
-    public func addEndpoints(_ endpoints: [SwitchcraftEndpoint]) {
+    public func addEndpoints(_ endpoints: [Endpoint]) {
         self.endpoints.append(contentsOf: endpoints)
     }
 
@@ -122,7 +122,7 @@ public class Switchcraft: UIViewController {
      *
      * - return: The endpoint if it was removed, otherwise `nil`.
      */
-    public func removeEndpoint(_ endpoint: SwitchcraftEndpoint) -> SwitchcraftEndpoint? {
+    public func removeEndpoint(_ endpoint: Endpoint) -> Endpoint? {
         return endpoints.index(of: endpoint).map { endpoints.remove(at: $0) }
     }
 
@@ -135,7 +135,7 @@ public class Switchcraft: UIViewController {
 
     // MARK: Helper Functions
 
-    private func selected(endpoint: SwitchcraftEndpoint) {
+    private func selected(endpoint: Endpoint) {
         manager.endpoint = endpoint.url
         delegate?.switchcraft(self, didChangeEndpoint: endpoint)
     }

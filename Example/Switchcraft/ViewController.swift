@@ -28,9 +28,9 @@ class ViewController: UIViewController {
     @objc private func showSwitchcraft() {
         SwitchcraftManager.shared.allowCustom = true
         let switchcraft = Switchcraft(endpoints: [
-            SwitchcraftEndpoint(title: "Google", url: "https://google.com"),
-            SwitchcraftEndpoint(title: "Apple", url: "https://apple.com"),
-            SwitchcraftEndpoint(title: "Amazon", url: "https://amazon.com")
+            Endpoint(title: "Google", url: "https://google.com"),
+            Endpoint(title: "Apple", url: "https://apple.com"),
+            Endpoint(title: "Amazon", url: "https://amazon.com")
             ]
         )
         switchcraft.delegate = self
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: SwitchcraftDelegate {
-    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: SwitchcraftEndpoint) {
+    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpoint endpoint: Endpoint) {
         currentEndpointLabel.text = endpoint.url
     }
 }

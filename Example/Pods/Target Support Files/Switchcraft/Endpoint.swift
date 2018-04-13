@@ -1,5 +1,5 @@
 //
-//  SwitchcraftEndpoint.swift
+//  \Endpoint.swift
 //  Pods-Switchcraft_Example
 //
 //  Created by Brendan Lensink on 2018-04-04.
@@ -8,7 +8,7 @@
 /**
  * Represents an endpoint that can be chosen using the `Switchcraft` picker
  */
-public struct SwitchcraftEndpoint {
+public struct Endpoint {
 
     /// A title that will be shown instead of the url in the UIAlertController. Defaults to the url
     public let title: String?
@@ -33,8 +33,8 @@ public struct SwitchcraftEndpoint {
     }
 }
 
-extension SwitchcraftEndpoint: Equatable {
-    public static func == (lhs: SwitchcraftEndpoint, rhs: SwitchcraftEndpoint) -> Bool {
+extension Endpoint: Equatable {
+    public static func == (lhs: Endpoint, rhs: Endpoint) -> Bool {
         return lhs.title == rhs.title &&
             lhs.url == rhs.url
     }
