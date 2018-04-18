@@ -21,10 +21,18 @@ public struct Endpoint: Codable {
     public let url: URL
 
     /**
-     * Helper variable to show a user-facing name for the endpoint
+     * Helper variable to show a formatted user-facing name for the endpoint
      */
     public var name: String {
-        return title ?? url.absoluteString
+        // If there's a user set title just return that
+        if let title = title {
+            return title
+        }
+
+        // Otherwise, clean up the url and return that.
+        var formattedURL = url.absoluteString.replacingOccurrences(of: "http://", with: "")
+        formattedURL = formattedURL.replacingOccurrences(of: "https://", with: "")
+        return formattedURL
     }
 
     /**
