@@ -114,18 +114,10 @@ public class Switchcraft {
      *
      * - parameter to: The view controller to show the switcher in.
      */
-    public func attachGesture(to viewController: UIViewController) {
-        // TODO: Add possibility to pass in custom gesture here
-
+    public func attachGesture(to viewController: UIViewController, gestureRecognizer: UITapGestureRecognizer? = nil) {
         // Make sure the view is touchable
         viewController.view.isUserInteractionEnabled = true
-
-        let defaultGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
-        defaultGesture.numberOfTapsRequired = 1 // 2
-        defaultGesture.numberOfTouchesRequired = 1 // 3
-        tapAction = { self.display(from: viewController) }
-
-        viewController.view.addGestureRecognizer(defaultGesture)
+        viewController.view.addGestureRecognizer(gestureRecognizer ?? makeDefaultGestureRecognizer(forVC: viewController))
 
         if let currentEndpoint = endpoint {
             delegate?.switchcraft(self, didChangeEndpointTo: currentEndpoint)
@@ -138,15 +130,13 @@ public class Switchcraft {
      * - parameter to: The view to attach the gesture recognizer to.
      * - parameter parent: The view controller to show the switcher in.
      */
-    public func attachGesture(to view: UIView, parent: UIViewController) {
+    public func attachGesture(to view: UIView, parent: UIViewController, gestureRecognizer: UITapGestureRecognizer? = nil) {
         view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(gestureRecognizer ?? makeDefaultGestureRecognizer(forVC: parent))
 
-        let defaultGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
-        defaultGesture.numberOfTapsRequired = 1 // 2
-        defaultGesture.numberOfTouchesRequired = 1 // 3
-        tapAction = { self.display(from: parent) }
-
-        view.addGestureRecognizer(defaultGesture)
+        if let currentEndpoint = endpoint {
+            delegate?.switchcraft(self, didChangeEndpointTo: currentEndpoint)
+        }
     }
 
     /**
@@ -257,5 +247,14 @@ public class Switchcraft {
     private func selected(endpoint: Endpoint) {
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
         self.endpoint = endpoint
+    }
+
+    private func makeDefaultGestureRecognizer(forVC viewController: UIViewController) -> UITapGestureRecognizer {
+        tapAction = { self.display(from: viewController) }
+
+        let defaultGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+        defaultGesture.numberOfTapsRequired = 1 // 2
+        defaultGesture.numberOfTouchesRequired = 1 // 3
+        return defaultGesture
     }
 }
