@@ -15,6 +15,9 @@ public class Switchcraft {
     // TODO: I'm not sure this is the best way to do this (with a setup()) you have to call to get the singleton going, but I'm not sure if there's another way :/
     public static let shared = Switchcraft()
 
+    /**
+     * Enforce singleton behaviour.
+     */
     private init() {}
 
     // MARK: Private Declarations
