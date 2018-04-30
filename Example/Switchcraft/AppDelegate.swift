@@ -14,14 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         var config = Config(endpoints: [
             Endpoint(title: "Google", url: URL(string: "http://google.com")!),
             Endpoint(title: "Apple", url: URL(string: "http://apple.com")!),
-            Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!),
-            ])
+            Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!)
+        ])
         config.allowCustom = true
         Switchcraft.shared.setup(config: config)
 

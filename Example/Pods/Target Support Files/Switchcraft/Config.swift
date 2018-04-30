@@ -29,7 +29,7 @@ public struct Config {
      * The alert view message.
      * Default is nil.
      */
-    public var alertMessage: String? = nil
+    public var alertMessage: String?
 
     /**
      * The alert view text field placeholder.

@@ -82,9 +82,7 @@ public class Switchcraft {
      * Convenience function to get the default endpoint.
      */
     public var defaultEndpoint: Endpoint {
-        get {
-            return config.endpoints[config.defaultEndpointIndex]
-        }
+        return config.endpoints[config.defaultEndpointIndex]
     }
 
     /**
@@ -148,7 +146,6 @@ public class Switchcraft {
      * - parameter from: The view controller to show the switcher in.
      */
     public func display(from parentVC: UIViewController) {
-
         let viewController = UIViewController()
         viewController.modalPresentationStyle = .overCurrentContext
         parentVC.present(viewController, animated: true, completion: nil)
@@ -204,7 +201,7 @@ public class Switchcraft {
                 UIAlertAction(
                     title: endpoint.name,
                     style: .default,
-                    handler: { [weak self] (action) in
+                    handler: { [weak self] _ in
                         self?.selected(endpoint: endpoint)
                         viewController.dismiss(animated: false, completion: nil)
                     }
@@ -212,7 +209,13 @@ public class Switchcraft {
             )
         }
 
-        alertController.addAction(UIAlertAction(title: config.cancelTitle, style: .cancel, handler: { _ in viewController.dismiss(animated: false, completion: nil) }))
+        alertController.addAction(
+            UIAlertAction(
+                title: config.cancelTitle,
+                style: .cancel,
+                handler: { _ in viewController.dismiss(animated: false, completion: nil) }
+            )
+        )
 
         viewController.present(alertController, animated: true, completion: nil)
     }
@@ -243,7 +246,7 @@ public class Switchcraft {
         }
 
         let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
-        let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
+        let predicate = NSPredicate(format: "SELF MATCHES %@", argumentArray: [regEx])
         return predicate.evaluate(with: string)
     }
 
