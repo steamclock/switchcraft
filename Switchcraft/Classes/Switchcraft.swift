@@ -12,7 +12,10 @@ public protocol SwitchcraftDelegate: AnyObject {
 }
 
 public class Switchcraft {
-    // TODO: I'm not sure this is the best way to do this (with a setup()) you have to call to get the singleton going, but I'm not sure if there's another way :/
+
+    /**
+     * Singleton instance.
+     */
     public static let shared = Switchcraft()
 
     /**
@@ -54,8 +57,6 @@ public class Switchcraft {
      * The currently selected endpoint.
      */
     public var endpoint: Endpoint? {
-        // TODO: Consider adding a private get/setter for userdefaults
-        //         and store the value so we don't need to keep hitting defaults
         get {
             if let data = UserDefaults.standard.data(forKey: config.defaultsKey),
                     let endpoint = try? JSONDecoder().decode(Endpoint.self, from: data) {
@@ -73,8 +74,7 @@ public class Switchcraft {
     /**
      * Check if the current endpoint is the default one.
      */
-    // TODO: this could be named better
-    public var currentEndpointIsDefault: Bool {
+    public var isDefaultEndpoint: Bool {
         return endpoint == config.endpoints[config.defaultEndpointIndex]
     }
 
@@ -182,11 +182,9 @@ public class Switchcraft {
 
         for endpoint in config.endpoints {
             // Don't show the currently selected endpoint as an option
-            // TODO: I suspect this will be confusing and need to be changed.
             guard endpoint != self.endpoint else { continue }
 
             alertController.addAction(
-                // TODO: Better default value for title, can atleast strip http, etc
                 UIAlertAction(
                     title: endpoint.name,
                     style: .default,
