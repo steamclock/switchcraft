@@ -271,8 +271,11 @@ public class Switchcraft {
      * - parameter endpoint: The new endpoint to save.
      */
     private func selected(endpoint: Endpoint) {
-        delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
         self.endpoint = endpoint
+        delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
+        if config.shouldBroadcastEndpointChange {
+            NotificationCenter.default.post(name: config.broadcastName, object: endpoint)
+        }
     }
 
     /**
