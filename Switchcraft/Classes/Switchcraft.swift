@@ -111,27 +111,16 @@ public class Switchcraft {
     }
 
     /**
-     * Attach the default gesture recognizer to a view controller to show the switcher within its view.
-     *
-     * - parameter to: The view controller to show the switcher in.
-     */
-    public func attachGesture(to viewController: UIViewController, gestureRecognizer: UITapGestureRecognizer? = nil) {
-        // Make sure the view is touchable
-        viewController.view.isUserInteractionEnabled = true
-        viewController.view.addGestureRecognizer(gestureRecognizer ?? makeDefaultGestureRecognizer(forVC: viewController))
-
-        if let currentEndpoint = endpoint {
-            delegate?.switchcraft(self, didChangeEndpointTo: currentEndpoint)
-        }
-    }
-
-    /**
      * Attach the default gesture recognizer to a view, along with the view controller to show the switcher in.
      *
      * - parameter to: The view to attach the gesture recognizer to.
      * - parameter parent: The view controller to show the switcher in.
      */
-    public func attachGesture(to view: UIView, parent: UIViewController, gestureRecognizer: UITapGestureRecognizer? = nil) {
+    public func attachGesture(to parent: UIViewController, gestureView: UIView? = nil, gestureRecognizer: UITapGestureRecognizer? = nil) {
+        guard let view = gestureView ?? parent.view else {
+            fatalError("Failed to attach a gesture recognizer, parent's view was `nil`")
+        }
+
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(gestureRecognizer ?? makeDefaultGestureRecognizer(forVC: parent))
 
