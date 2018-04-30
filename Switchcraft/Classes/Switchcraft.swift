@@ -20,18 +20,39 @@ public protocol SwitchcraftDelegate: AnyObject {
 /**
  * Global instance used to coordinate endpoint selection and retrieval.
  * Tracks current endpoint selection, along with config options.
+ *
+ * If you only plan on using a single instance of Switchcraft, we recommend following the ReallySimpleVC example.
+ * In your `AppDelegate.swift`, create a global extension as follows:
+ *     extension Switchcraft {
+ *        static let shared = Switchcraft(config: /*..*/)
+ *    }
  */
 public class Switchcraft {
 
     /**
-     * Singleton instance.
+     * Create a new Switchcraft instance with the given config
+     *
+     * - parameter config: The configuration to use when setting up.
      */
-    public static let shared = Switchcraft()
+    public init(config: Config) {
+        let endpoints = config.endpoints
 
-    /**
-     * Enforce singleton behaviour.
-     */
-    private init() {}
+        guard !endpoints.isEmpty else {
+            fatalError("Switchcraft.setup called with no endpoints set. You probably didn't mean to do that.")
+        }
+
+        if !endpoints.indices.contains(config.defaultEndpointIndex) {
+            debugPrint("`defaultEndpointIndex` was invalid, reverting to the first element.")
+            self.config.defaultEndpointIndex = 0
+        }
+
+        self.config = config
+
+        // If there's no endpoint saved, store the default
+        if endpoint == nil {
+            selected(endpoint: endpoints[config.defaultEndpointIndex])
+        }
+    }
 
     // MARK: Private Declarations
 
@@ -93,31 +114,6 @@ public class Switchcraft {
      */
     public var defaultEndpoint: Endpoint {
         return config.endpoints[config.defaultEndpointIndex]
-    }
-
-    /**
-     * Set up the Switchcraft manager for use later.
-     *
-     * - parameter config: The config options to use when managing the switcher.
-     */
-    public func setup(config: Config) {
-        let endpoints = config.endpoints
-
-        guard !endpoints.isEmpty else {
-            fatalError("Switchcraft.setup called with no endpoints set. You probably didn't mean to do that.")
-        }
-
-        if !endpoints.indices.contains(config.defaultEndpointIndex) {
-            debugPrint("`defaultEndpointIndex` was invalid, reverting to the first element.")
-            self.config.defaultEndpointIndex = 0
-        }
-
-        self.config = config
-
-        // If there's no endpoint saved, store the default
-        if endpoint == nil {
-            selected(endpoint: endpoints[config.defaultEndpointIndex])
-        }
     }
 
     /**

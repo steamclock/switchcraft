@@ -18,7 +18,7 @@ public struct Config {
      * The location in UserDefaults.standard where the endpoint is stored.
      * Default is "switchcraftEndpoint".
      */
-    public var defaultsKey = "switchcraftEndpoint"
+    public var defaultsKey: String!
 
     /**
      * The alert view title.
@@ -90,8 +90,11 @@ public struct Config {
      * Create a new config with a set of endpoints.
      *
      * - parameter endpoints: The set of endpoints to show in the picker.
+     * - parameter allowCustom: Whether the switcher allows entering custom endpoints.
      */
-    public init(endpoints: [Endpoint]) {
+    public init(defaultsKey: String, endpoints: [Endpoint], allowCustom: Bool = false) {
+        self.defaultsKey = defaultsKey
         self.endpoints = endpoints
+        self.allowCustom = allowCustom
     }
 }

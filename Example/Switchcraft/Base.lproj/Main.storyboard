@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wot-sv-RFA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,13 +7,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Really Simple-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Switchcraft_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ReallySimpleExampleVC" customModule="Switchcraft_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -30,7 +31,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeK-fJ-lJF">
-                                <rect key="frame" x="36" y="647" width="303" height="0.0"/>
+                                <rect key="frame" x="36" y="598" width="303" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,11 +48,97 @@
                             <constraint firstItem="HJU-a5-ia0" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="x2C-w3-8Jn"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Really Simple" id="mQZ-e9-PFP"/>
                     <connections>
                         <outlet property="currentEndpointLabel" destination="jeK-fJ-lJF" id="1Q4-eW-q4i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+        </scene>
+        <!--Multiple Switchers-->
+        <scene sceneID="1V9-vF-Oil">
+            <objects>
+                <viewController id="gDU-v3-A4Y" customClass="MultipleSwitchersVC" customModule="Switchcraft_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UcP-EN-GTf"/>
+                        <viewControllerLayoutGuide type="bottom" id="NPW-qk-2qk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lVO-Co-wxp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Second Switcher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qic-JN-X9C">
+                                <rect key="frame" x="99.5" y="389.5" width="176" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BW7-Gn-Zzw">
+                                <rect key="frame" x="26" y="183" width="323" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Visit First Endpoint"/>
+                                <connections>
+                                    <action selector="visitTouched:" destination="gDU-v3-A4Y" eventType="touchUpInside" id="Ovc-z1-o6P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJe-Pe-O1U">
+                                <rect key="frame" x="26" y="450.5" width="323" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Visit Second Endpoint"/>
+                                <connections>
+                                    <action selector="visitTouched:" destination="gDU-v3-A4Y" eventType="touchUpInside" id="c3S-I7-7FL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open First Switcher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhf-bQ-odV">
+                                <rect key="frame" x="112" y="122" width="151" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mJe-Pe-O1U" firstAttribute="top" secondItem="Qic-JN-X9C" secondAttribute="bottom" constant="40" id="El0-tO-upR"/>
+                            <constraint firstItem="BW7-Gn-Zzw" firstAttribute="centerY" secondItem="lVO-Co-wxp" secondAttribute="centerY" multiplier="0.6" id="MjR-VD-qT3"/>
+                            <constraint firstItem="mJe-Pe-O1U" firstAttribute="leading" secondItem="lVO-Co-wxp" secondAttribute="leadingMargin" constant="10" id="Nqe-Uj-3XG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BW7-Gn-Zzw" secondAttribute="trailing" constant="10" id="YTb-42-VxO"/>
+                            <constraint firstItem="BW7-Gn-Zzw" firstAttribute="leading" secondItem="lVO-Co-wxp" secondAttribute="leadingMargin" constant="10" id="YcQ-oB-9nz"/>
+                            <constraint firstItem="Qic-JN-X9C" firstAttribute="centerY" secondItem="lVO-Co-wxp" secondAttribute="centerY" multiplier="1.2" id="coz-Kl-ZBM"/>
+                            <constraint firstItem="mhf-bQ-odV" firstAttribute="centerX" secondItem="lVO-Co-wxp" secondAttribute="centerX" id="ea2-PF-Gn6"/>
+                            <constraint firstItem="Qic-JN-X9C" firstAttribute="centerX" secondItem="lVO-Co-wxp" secondAttribute="centerX" id="fOv-wl-VVm"/>
+                            <constraint firstItem="BW7-Gn-Zzw" firstAttribute="top" secondItem="mhf-bQ-odV" secondAttribute="bottom" constant="40" id="rZy-iB-67l"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mJe-Pe-O1U" secondAttribute="trailing" constant="10" id="toe-ae-ziq"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Multiple Switchers" id="9dD-u3-heH"/>
+                    <connections>
+                        <outlet property="openFirstLabel" destination="mhf-bQ-odV" id="yxW-ch-FBD"/>
+                        <outlet property="openSecondLabel" destination="Qic-JN-X9C" id="orG-Pv-s7a"/>
+                        <outlet property="visitFirstButton" destination="BW7-Gn-Zzw" id="4PD-Hp-1i1"/>
+                        <outlet property="visitSecondButton" destination="mJe-Pe-O1U" id="d4Q-AH-FBC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c7n-qr-zGs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="823"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="slI-xu-XNK">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wot-sv-RFA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4xq-eB-XQz">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="Zxk-u1-Sx2"/>
+                        <segue destination="gDU-v3-A4Y" kind="relationship" relationship="viewControllers" id="vgl-tD-YVc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rCd-iS-hN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>

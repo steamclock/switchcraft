@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ReallySimpleExampleVC.swift
 //  Switchcraft
 //
 //  Created by brendan@steamclock.com on 03/29/2018.
@@ -10,7 +10,7 @@ import SafariServices
 import Switchcraft
 import UIKit
 
-class ViewController: UIViewController {
+class ReallySimpleExampleVC: UIViewController {
     @IBOutlet private var currentEndpointLabel: UILabel!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: SwitchcraftDelegate {
+extension ReallySimpleExampleVC: SwitchcraftDelegate {
     func switchcraft(_ switchcraft: Switchcraft, didChangeEndpointTo newEndpoint: Endpoint) {
         currentEndpointLabel.isHidden = newEndpoint == switchcraft.defaultEndpoint
         currentEndpointLabel.text = "Current Endpoint:\n\(newEndpoint.name)"

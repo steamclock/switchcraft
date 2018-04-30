@@ -15,14 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        var config = Config(endpoints: [
+        return true
+    }
+}
+
+extension Switchcraft {
+    static let shared = Switchcraft(config: Config(
+        defaultsKey: "simpleEndpoint",
+        endpoints: [
             Endpoint(title: nil, url: URL(string: "https://google.com")!),
             Endpoint(title: nil, url: URL(string: "http://apple.com")!),
             Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!)
         ])
-        config.allowCustom = true
-        Switchcraft.shared.setup(config: config)
-
-        return true
-    }
+    )
 }
