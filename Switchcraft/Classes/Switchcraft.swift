@@ -157,6 +157,22 @@ public class Switchcraft {
             preferredStyle: config.allowCustom ? .alert : .actionSheet
         )
 
+        for endpoint in config.endpoints {
+            // Don't show the currently selected endpoint as an option
+            guard endpoint != self.endpoint else { continue }
+
+            alertController.addAction(
+                UIAlertAction(
+                    title: endpoint.name,
+                    style: .default,
+                    handler: { [weak self] _ in
+                        self?.selected(endpoint: endpoint)
+                        viewController.dismiss(animated: false, completion: nil)
+                    }
+                )
+            )
+        }
+
         if config.allowCustom {
             textFieldDoneButton = UIAlertAction(
                 title: config.textFieldDoneTitle,
@@ -169,7 +185,7 @@ public class Switchcraft {
                     }
 
                     if !text.contains("http://") && !text.contains("https://") {
-                     text = "http://" + text
+                        text = "http://" + text
                     }
 
                     guard let url = URL(string: text) else {
@@ -185,22 +201,6 @@ public class Switchcraft {
                 textField.addTarget(self, action: #selector(self.textFieldChanged), for: .editingChanged)
                 textField.text = self.endpoint?.url.absoluteString
             })
-        }
-
-        for endpoint in config.endpoints {
-            // Don't show the currently selected endpoint as an option
-            guard endpoint != self.endpoint else { continue }
-
-            alertController.addAction(
-                UIAlertAction(
-                    title: endpoint.name,
-                    style: .default,
-                    handler: { [weak self] _ in
-                        self?.selected(endpoint: endpoint)
-                        viewController.dismiss(animated: false, completion: nil)
-                    }
-                )
-            )
         }
 
         alertController.addAction(

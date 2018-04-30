@@ -26,6 +26,7 @@ extension Switchcraft {
             Endpoint(title: nil, url: URL(string: "https://google.com")!),
             Endpoint(title: nil, url: URL(string: "http://apple.com")!),
             Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!)
-        ])
-    )
+        ],
+        allowCustom: true
+    ))
 }

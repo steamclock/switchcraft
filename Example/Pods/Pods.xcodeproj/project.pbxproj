@@ -146,8 +146,6 @@
 		94712339336298F02D0973903474E824 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B3A8FA712075442E001F2894 /* Config.swift */,
-				B3A8FA702075442E001F2894 /* Endpoint.swift */,
 				4E17C34492999386B673318D285A2127 /* Info.plist */,
 				3FBE1A0EAE2ACC54B304F687651064AB /* Switchcraft.modulemap */,
 				89F43820E7E6688206BF018F6DBA719E /* Switchcraft.xcconfig */,
@@ -198,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				24734A110B9EAB32B8CD97FA02E3B148 /* Switchcraft.swift */,
+				B3A8FA712075442E001F2894 /* Config.swift */,
+				B3A8FA702075442E001F2894 /* Endpoint.swift */,
 				94712339336298F02D0973903474E824 /* Support Files */,
 			);
 			name = Switchcraft;
