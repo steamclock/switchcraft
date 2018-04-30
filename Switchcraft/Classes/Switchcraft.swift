@@ -41,12 +41,12 @@ public class Switchcraft {
             fatalError("Switchcraft.setup called with no endpoints set. You probably didn't mean to do that.")
         }
 
+        self.config = config
+
         if !endpoints.indices.contains(config.defaultEndpointIndex) {
             debugPrint("`defaultEndpointIndex` was invalid, reverting to the first element.")
             self.config.defaultEndpointIndex = 0
         }
-
-        self.config = config
 
         // If there's no endpoint saved, store the default
         if endpoint == nil {
@@ -75,7 +75,7 @@ public class Switchcraft {
     /**
      * User set configuration options. Must be set before using `Switchcraft`.
      */
-    private var config: Config!
+    private var config: Config
 
     // MARK: Public Declarations
 

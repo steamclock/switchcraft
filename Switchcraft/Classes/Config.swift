@@ -18,7 +18,7 @@ public struct Config {
      * The location in UserDefaults.standard where the endpoint is stored.
      * Default is "switchcraftEndpoint".
      */
-    public var defaultsKey: String!
+    public var defaultsKey: String
 
     /**
      * The alert view title.
