@@ -39,11 +39,11 @@ Then you can retrieve the current endpoint from anywhere with
 Switchcraft.shared.endpoint
 ```
 
-To see this in action, check out the [ReallySimpleExampleVC](TODO).
+To see this in action, check out the [ReallySimpleExampleVC](https://github.com/steamclock/switchcraft/blob/master/Example/Switchcraft/ReallySimpleExampleVC.swift).
 
 ### Getting Fancy
 
-There are lots of knobs to tweak in your config file. See [Config.swift](TODO) for a full list.
+There are lots of knobs to tweak in your config file. See [Config.swift](https://github.com/steamclock/switchcraft/blob/master/Switchcraft/Classes/Config.swift) for a full list.
 
 ## Example
 
