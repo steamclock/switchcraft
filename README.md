@@ -4,11 +4,56 @@
 [![License](https://img.shields.io/cocoapods/l/Switchcraft.svg?style=flat)](http://cocoapods.org/pods/Switchcraft)
 [![Platform](https://img.shields.io/cocoapods/p/Switchcraft.svg?style=flat)](http://cocoapods.org/pods/Switchcraft)
 
+## Contents
+
+- [Description](#description)
+- [Usage](#usage)
+- [Example](#example)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Author](#author)
+- [License](#license)
+
+## Description
+
+Switchcraft is a simple tool designed to make switching between different endpoints a breeze.
+
+It is designed to be dropped in to an exsting project and forgot about, but also supports configuring multiple instances and lots of other neat things.
+
+## Usage
+
+### Managing a Single Instance
+
+The simplest way to use Switchcraft is to declare a single global instance, we recommend in your `AppDelegate.swift`, as follows:
+```
+extension Switchcraft {
+    static let shared = Switchcraft(config: /*..*/)
+}
+```
+Then, from your ViewController where you'd like to show the picker, all you need to do is attach the `Switchcraft` gesture recognizer to a view controller:
+```
+Switchcraft.shared.attachGesture(to: self)
+```
+Then you can retrieve the current endpoint from anywhere with
+```
+Switchcraft.shared.endpoint
+```
+
+To see this in action, check out the [ReallySimpleExampleVC](TODO).
+
+### Getting Fancy
+
+There are lots of knobs to tweak in your config file. See [Config.swift](TODO) for a full list.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
+- iOS 9.3 or above
+- Xcode 8.2.1 or above
+- Swift 3.2 or above
 
 ## Installation
 
@@ -25,4 +70,4 @@ brendan@steamclock.com
 
 ## License
 
-Switchcraft is available under the MIT license. See the LICENSE file for more info.
+Switchcraft is available under the MIT license. See the [LICENSE](https://github.com/steamclock/switchcraft/blob/master/README.md) file for more info.
