@@ -5,12 +5,22 @@
 //  Created by brendan@steamclock.com on 03/29/2018.
 //  Copyright (c) 2018 Steamclock Software. All rights reserved.
 //
-//
 
+/**
+ * Protocol allowing conforming objects to monitor changes to the selected endpoint.
+ */
 public protocol SwitchcraftDelegate: AnyObject {
+
+    /**
+     * Called whenever the selected endpoint changes.
+     */
     func switchcraft(_ switchcraft: Switchcraft, didChangeEndpointTo newEndpoint: Endpoint)
 }
 
+/**
+ * Global instance used to coordinate endpoint selection and retrieval.
+ * Tracks current endpoint selection, along with config options.
+ */
 public class Switchcraft {
 
     /**
@@ -98,7 +108,7 @@ public class Switchcraft {
         }
 
         if !endpoints.indices.contains(config.defaultEndpointIndex) {
-            debugPrint("`defaultEndpointIndex` was invalid, reverting to the first element")
+            debugPrint("`defaultEndpointIndex` was invalid, reverting to the first element.")
             self.config.defaultEndpointIndex = 0
         }
 
@@ -124,13 +134,14 @@ public class Switchcraft {
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(gestureRecognizer ?? makeDefaultGestureRecognizer(forVC: parent))
 
+        // Notify the parent of the current selected endpoint after attaching to it
         if let currentEndpoint = endpoint {
             delegate?.switchcraft(self, didChangeEndpointTo: currentEndpoint)
         }
     }
 
     /**
-     * Show the switcher within the given view controller
+     * Show the switcher within the given view controller.
      *
      * - parameter from: The view controller to show the switcher in.
      */
@@ -209,10 +220,20 @@ public class Switchcraft {
 
     // MARK: Private Actions And Helpers
 
+    /**
+     * Called by the gesture recognizer when it is triggered.
+     *
+     * - parameter sender: A reference to the `UITapGestureRecognizer` that send the event.
+     */
     @objc private func tapHandler(_ sender: UITapGestureRecognizer) {
         tapAction?()
     }
 
+    /**
+     * Text field event listener, updates the done button as the text field is modified.
+     *
+     * - parameter sender: A reference to the text field.
+     */
     @objc private func textFieldChanged(_ sender: UITextField) {
         guard var text = sender.text else {
             textFieldDoneButton?.isEnabled = false
@@ -226,6 +247,13 @@ public class Switchcraft {
         self.textFieldDoneButton?.isEnabled = canOpenURL(text)
     }
 
+    /**
+     * Checks if a given string is a valid url and can be opened.
+     *
+     * - parameter string: The string to check
+     *
+     * - returns: True if the string is a well formed URL, false if not.
+     */
     private func canOpenURL(_ string: String) -> Bool {
         // Adapted from https://stackoverflow.com/a/36012850/6718381
         guard let url = URL(string: string), UIApplication.shared.canOpenURL(url) else {
@@ -237,17 +265,29 @@ public class Switchcraft {
         return predicate.evaluate(with: string)
     }
 
+    /**
+     * Called when a new endpoint is selected, propogate to the delegate and store the new endpoint.
+     *
+     * - parameter endpoint: The new endpoint to save.
+     */
     private func selected(endpoint: Endpoint) {
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
         self.endpoint = endpoint
     }
 
+    /**
+     * Create and return the default gesture recognizer to attack to a view.
+     *
+     * - parameter viewController: The view controller the switcher will be attached to when displayed.
+     *
+     * - returns: The new gesture recognizer.
+     */
     private func makeDefaultGestureRecognizer(forVC viewController: UIViewController) -> UITapGestureRecognizer {
         tapAction = { self.display(from: viewController) }
 
         let defaultGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
-        defaultGesture.numberOfTapsRequired = 1 // 2
-        defaultGesture.numberOfTouchesRequired = 1 // 3
+        defaultGesture.numberOfTapsRequired = 2
+        defaultGesture.numberOfTouchesRequired = 3
         return defaultGesture
     }
 }

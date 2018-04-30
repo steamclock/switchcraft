@@ -1,8 +1,9 @@
 //
 //  Config.swift
-//  Pods-Switchcraft_Example
+//  Switchcraft
 //
 //  Created by Brendan Lensink on 2018-03-29.
+//  Copyright (c) 2018 Steamclock Software. All rights reserved.
 //
 
 import Foundation

@@ -1,8 +1,9 @@
 //
 //  Endpoint.swift
-//  Pods-Switchcraft_Example
+//  Switchcraft
 //
 //  Created by Brendan Lensink on 2018-04-04.
+//  Copyright (c) 2018 Steamclock Software. All rights reserved.
 //
 
 /**
