@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         var config = Config(endpoints: [
-            Endpoint(title: "Google", url: URL(string: "http://google.com")!),
-            Endpoint(title: "Apple", url: URL(string: "http://apple.com")!),
+            Endpoint(title: nil, url: URL(string: "https://google.com")!),
+            Endpoint(title: nil, url: URL(string: "http://apple.com")!),
             Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!)
         ])
         config.allowCustom = true

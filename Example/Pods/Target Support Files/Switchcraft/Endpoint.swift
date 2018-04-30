@@ -1,17 +1,17 @@
 //
-//  \Endpoint.swift
+//  Endpoint.swift
 //  Pods-Switchcraft_Example
 //
 //  Created by Brendan Lensink on 2018-04-04.
 //
 
 /**
- * Represents an endpoint that can be chosen using the `Switchcraft` picker
+ * Represents an endpoint that can be chosen using the `Switchcraft` picker.
  */
 public struct Endpoint: Codable {
 
     /**
-     * A title that will be shown instead of the url in the UIAlertController. Defaults to the url
+     * A title to be shown instead of the url in the UIAlertController.
      */
     public let title: String?
 
@@ -21,7 +21,7 @@ public struct Endpoint: Codable {
     public let url: URL
 
     /**
-     * Helper variable to show a formatted user-facing name for the endpoint
+     * Helper variable to show a formatted user-facing name for the endpoint.
      */
     public var name: String {
         // If there's a user set title just return that
@@ -29,17 +29,15 @@ public struct Endpoint: Codable {
             return title
         }
 
-        // Otherwise, clean up the url and return that.
-        var formattedURL = url.absoluteString.replacingOccurrences(of: "http://", with: "")
-        formattedURL = formattedURL.replacingOccurrences(of: "https://", with: "")
-        return formattedURL
+        // Otherwise, clean up the url and return that
+        return url.absoluteString.replacingOccurrences(of: "https://|http://", with: "", options: .regularExpression)
     }
 
     /**
      * Create a new endpoint.
      *
      * - parameter title: An optional title to show instead of the url when selecting an endpoint.
-     * - parameter url: The url to save and return when chosen
+     * - parameter url: The url to save and return when chosen.
      */
     public init(title: String?, url: URL) {
         self.title = title
@@ -48,6 +46,9 @@ public struct Endpoint: Codable {
 }
 
 extension Endpoint: Equatable {
+    /**
+     * Check equality between two Endpoints.
+     */
     public static func == (lhs: Endpoint, rhs: Endpoint) -> Bool {
         return lhs.title == rhs.title &&
             lhs.url == rhs.url
