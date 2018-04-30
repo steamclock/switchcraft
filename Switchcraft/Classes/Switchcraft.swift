@@ -289,8 +289,11 @@ public class Switchcraft {
         tapAction = { self.display(from: viewController) }
 
         let defaultGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
-        defaultGesture.numberOfTapsRequired = 2
-        defaultGesture.numberOfTouchesRequired = 3
+
+        // Change default tap behaviour if running on the simulator
+        let isSimulator = TARGET_OS_SIMULATOR != 0
+        defaultGesture.numberOfTapsRequired = isSimulator ? 1 : 2
+        defaultGesture.numberOfTouchesRequired = isSimulator ? 1 : 3
         return defaultGesture
     }
 }
