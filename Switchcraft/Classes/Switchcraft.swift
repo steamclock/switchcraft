@@ -48,7 +48,7 @@ public class Switchcraft {
     /**
      * Delegate to receive updates for changes to the endpoint
      */
-    public var delegate: SwitchcraftDelegate?
+    public weak var delegate: SwitchcraftDelegate?
 
     /**
      * The currently selected endpoint.
