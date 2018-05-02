@@ -87,7 +87,7 @@ public class Switchcraft {
     /**
      * The currently selected endpoint.
      */
-    public var endpoint: Endpoint? {
+    public private(set) var endpoint: Endpoint? {
         get {
             if let data = UserDefaults.standard.data(forKey: config.defaultsKey),
                     let endpoint = try? JSONDecoder().decode(Endpoint.self, from: data) {
