@@ -10,7 +10,6 @@
  * Protocol allowing conforming objects to monitor changes to the selected endpoint.
  */
 public protocol SwitchcraftDelegate: AnyObject {
-
     /**
      * Called whenever the selected endpoint changes.
      */
@@ -18,69 +17,70 @@ public protocol SwitchcraftDelegate: AnyObject {
 }
 
 /**
- * Global instance used to coordinate endpoint selection and retrieval.
- * Tracks current endpoint selection, along with config options.
+ * Switchcraft is a simple manager to make switching endpoints easier.
  *
  * If you only plan on using a single instance of Switchcraft, we recommend following the ReallySimpleVC example.
  * In your `AppDelegate.swift`, create a global extension as follows:
  *     extension Switchcraft {
  *        static let shared = Switchcraft(config: /*..*/)
  *    }
+ * You can then get the current from anywhere as `Switchcraft.shared.endpoint`.
  */
 public class Switchcraft {
 
+    // MARK: - Initializers
+
     /**
-     * Create a new Switchcraft instance with the given config
+     * Create a new Switchcraft instance with the provided config.
      *
-     * - parameter config: The configuration to use when setting up.
+     * - parameter config: The configuration to use when setting up a new instance.
      */
     public init(config: Config) {
-        let endpoints = config.endpoints
-
-        guard !endpoints.isEmpty else {
+        guard !config.endpoints.isEmpty else {
             fatalError("Switchcraft.setup called with no endpoints set. You probably didn't mean to do that.")
         }
 
         self.config = config
 
+        let endpoints = config.endpoints
         if !endpoints.indices.contains(config.defaultEndpointIndex) {
-            debugPrint("`defaultEndpointIndex` was invalid, reverting to the first element.")
+            debugPrint("`defaultEndpointIndex` was invalid, reverting to the first endpoint. ")
             self.config.defaultEndpointIndex = 0
         }
 
-        // If there's no endpoint saved, store the default
+        // If there's no endpoint stored, store the default one
         if endpoint == nil {
             selected(endpoint: endpoints[config.defaultEndpointIndex])
         }
     }
 
-    // MARK: Private Declarations
+    // MARK: - Private Declarations
 
     /**
-     * Private shortcut to UserDefaults.
+     * User defined configuration options.
+     */
+    private var config: Config
+
+    /**
+     * Convenience shortcut to UserDefaults.
      */
     private let defaults = UserDefaults.standard
 
     /**
-     * The action triggered by the tap gesture recognizer.
+     * The action triggered by the tap gesture recognizer when pressed.
      */
-    private var tapAction: (() -> Void)?
+    private var showSwitcher: (() -> Void)?
 
     /**
-     * A reference the the action sheet text field submit button.
+     * A reference to the action sheet text field submit button.
      * Needed to toggle enabled for the button as text is entered.
      */
     private var textFieldDoneButton: UIAlertAction?
 
-    /**
-     * User set configuration options. Must be set before using `Switchcraft`.
-     */
-    private var config: Config
-
-    // MARK: Public Declarations
+    // MARK: - Public Declarations
 
     /**
-     * Delegate to receive updates for changes to the endpoint
+     * Delegate to receive updates for changes to the selected endpoint.
      */
     public weak var delegate: SwitchcraftDelegate?
 
@@ -117,20 +117,22 @@ public class Switchcraft {
     }
 
     /**
-     * Attach the default gesture recognizer to a view, along with the view controller to show the switcher in.
+     * Link the Switchcraft instance with a view controller for presentation
+     * Optionally, provide a custom view and gesture recognizer to handle showing the switcher.
      *
-     * - parameter to: The view to attach the gesture recognizer to.
      * - parameter parent: The view controller to show the switcher in.
+     * - parameter gestureView: An optional view to attach the switcher's gesture recognizer to.
+     * - parameter gestureRecognizer: An optional custom gesture recognizer to show the switcher.
      */
     public func attachGesture(to parent: UIViewController, gestureView: UIView? = nil, gestureRecognizer: UITapGestureRecognizer? = nil) {
         guard let view = gestureView ?? parent.view else {
-            fatalError("Failed to attach a gesture recognizer, parent's view was `nil`")
+            fatalError("Called `attachGesture` without a valid view. `parent`'s view is probably nil.")
         }
 
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(gestureRecognizer ?? makeDefaultGestureRecognizer(forVC: parent))
 
-        // Notify the parent of the current selected endpoint after attaching to it
+        // Notify the delegate of the current endpoint after attaching to it.
         if let currentEndpoint = endpoint {
             delegate?.switchcraft(self, didChangeEndpointTo: currentEndpoint)
         }
@@ -139,31 +141,23 @@ public class Switchcraft {
     /**
      * Show the switcher within the given view controller.
      *
-     * - parameter from: The view controller to show the switcher in.
+     * - parameter parentVC: The view controller to show the switcher in.
      */
     public func display(from parentVC: UIViewController) {
         let viewController = UIViewController()
         viewController.modalPresentationStyle = .overCurrentContext
         parentVC.present(viewController, animated: true, completion: nil)
 
-        var alertTitle = config.alertTitle
-        if let currentEndpoint = endpoint {
-            alertTitle += "\nCurrent Endpoint: \(currentEndpoint.name)"
-        }
-
         let alertController = UIAlertController(
-            title: alertTitle,
+            title: config.alertTitle,
             message: config.alertMessage,
             preferredStyle: config.allowCustom ? .alert : .actionSheet
         )
 
         for endpoint in config.endpoints {
-            // Don't show the currently selected endpoint as an option
-            guard endpoint != self.endpoint else { continue }
-
             alertController.addAction(
                 UIAlertAction(
-                    title: endpoint.name,
+                    title: endpoint.name + (endpoint == self.endpoint ? " ✔ " : ""),
                     style: .default,
                     handler: { [weak self] _ in
                         self?.selected(endpoint: endpoint)
@@ -178,19 +172,13 @@ public class Switchcraft {
                 title: config.textFieldDoneTitle,
                 style: .default,
                 handler: { _ in
+                    guard let textField = alertController.textFields?.first,
+                            let text = textField.text,
+                            let url = URL(string: text) else {
+                        return
+                    }
+
                     viewController.dismiss(animated: false, completion: nil)
-
-                    guard let textField = alertController.textFields?.first, var text = textField.text else {
-                        return
-                    }
-
-                    if !text.contains("http://") && !text.contains("https://") {
-                        text = "http://" + text
-                    }
-
-                    guard let url = URL(string: text) else {
-                        return
-                    }
                     self.selected(endpoint: Endpoint(title: "Custom URL", url: url))
                 }
             )
@@ -214,19 +202,20 @@ public class Switchcraft {
         viewController.present(alertController, animated: true, completion: nil)
     }
 
-    // MARK: Private Actions And Helpers
+    // MARK: - Actions
 
     /**
      * Called by the gesture recognizer when it is triggered.
+     * This will in turn call `showSwitcher` if it is defined, showing the switcher.
      *
-     * - parameter sender: A reference to the `UITapGestureRecognizer` that send the event.
+     * - parameter sender: A reference to the `UITapGestureRecognizer` that sent the event.
      */
     @objc private func tapHandler(_ sender: UITapGestureRecognizer) {
-        tapAction?()
+        showSwitcher?()
     }
 
     /**
-     * Text field event listener, updates the done button as the text field is modified.
+     * Text field event listener, updates the "Use Custom" button as the text field is modified.
      *
      * - parameter sender: A reference to the text field.
      */
@@ -237,11 +226,13 @@ public class Switchcraft {
         }
 
         if !text.contains("http://") && !text.contains("https://") {
-            text = "http://" + text
+            text = "https://" + text
         }
 
         self.textFieldDoneButton?.isEnabled = canOpenURL(text)
     }
+
+    // MARK: - Private Helpers
 
     /**
      * Checks if a given string is a valid url and can be opened.
@@ -275,18 +266,20 @@ public class Switchcraft {
     }
 
     /**
-     * Create and return the default gesture recognizer to attack to a view.
+     * Create and return the default UITapGestureRecognizer recognizer to attach to a view.
+     * The default gesture is a three finger double tap unless built with the simulator,
+     * in which case it uses a single tap.
      *
      * - parameter viewController: The view controller the switcher will be attached to when displayed.
      *
-     * - returns: The new gesture recognizer.
+     * - returns: The new `UITapGestureRecognizer`.
      */
     private func makeDefaultGestureRecognizer(forVC viewController: UIViewController) -> UITapGestureRecognizer {
-        tapAction = { self.display(from: viewController) }
+        showSwitcher = { self.display(from: viewController) }
 
         let defaultGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
 
-        // Change default tap behaviour if running on the simulator
+        // Change default tap behaviour if running on the simulator to use a single tap
         let isSimulator = TARGET_OS_SIMULATOR != 0
         defaultGesture.numberOfTapsRequired = isSimulator ? 1 : 2
         defaultGesture.numberOfTouchesRequired = isSimulator ? 1 : 3
