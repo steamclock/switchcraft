@@ -1,8 +1,7 @@
 {
   "name": "Switchcraft",
   "version": "0.1.0",
-  "summary": "A short description of Switchcraft.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "Drop and go endpoint selector written in Swift.",
   "homepage": "https://github.com/steamclock/Switchcraft",
   "license": {
     "type": "MIT",
@@ -16,7 +15,7 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.3"
   },
   "source_files": "Switchcraft/Classes/**/*"
 }

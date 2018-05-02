@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143587159F503AA10AE3E826 /* Pods_Switchcraft_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FADDFD5C99F4DA8405B8AD7 /* Pods_Switchcraft_Example.framework */; };
+		3B140D9EF6C96C79EAF96077 /* Pods_Switchcraft_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E909A755FE2C9AD45617714 /* Pods_Switchcraft_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ReallySimpleExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ReallySimpleExampleVC.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		835FC5099FD0206E7BFF0AE3 /* Pods_Switchcraft_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494E8301EBE278E994C46B64 /* Pods_Switchcraft_Tests.framework */; };
-		B382B0042097B47800ABAAD1 /* MultipleSwitchersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382B0032097B47800ABAAD1 /* MultipleSwitchersVC.swift */; };
-		EA4588AD027FD3448E31184D /* Pods_Switchcraft_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA1754AE526B95FE3E5772C /* Pods_Switchcraft_Example.framework */; };
+		B3860FF7209A67B8001D51DE /* ReallySimpleExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */; };
+		B3860FF8209A67B8001D51DE /* MultipleSwitchersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,26 +29,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		219E0D7FDE736D6F811002D0 /* Pods-Switchcraft_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		3EA1754AE526B95FE3E5772C /* Pods_Switchcraft_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Switchcraft_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		494E8301EBE278E994C46B64 /* Pods_Switchcraft_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Switchcraft_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		047FED48177DE060DD806E27 /* Pods-Switchcraft_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		29512DBAB7E1166B48369709 /* Pods-Switchcraft_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		368B83D481CC79B100F8DEDE /* Pods-Switchcraft_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		3E909A755FE2C9AD45617714 /* Pods_Switchcraft_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Switchcraft_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FADDFD5C99F4DA8405B8AD7 /* Pods_Switchcraft_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Switchcraft_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* Switchcraft_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Switchcraft_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ReallySimpleExampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallySimpleExampleVC.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Switchcraft_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Switchcraft_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		7A35DD3B6AFB254EDDC53FA5 /* Pods-Switchcraft_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example.release.xcconfig"; sourceTree = "<group>"; };
-		A9A89A40CF6A453D49ACA194 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		AEC05A08FB7EDE78909E4086 /* Pods-Switchcraft_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		B1A92E93E24E3164ED2D250D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		B382B0032097B47800ABAAD1 /* MultipleSwitchersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSwitchersVC.swift; sourceTree = "<group>"; };
-		C5E3101CD5D746806E67EB9A /* Switchcraft.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Switchcraft.podspec; path = ../Switchcraft.podspec; sourceTree = "<group>"; };
-		D91203AEDFD3A072B66447FC /* Pods-Switchcraft_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		708AF71E8D2722F9771F9726 /* Switchcraft.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Switchcraft.podspec; path = ../Switchcraft.podspec; sourceTree = "<group>"; };
+		A811DE5F400C048FF246F672 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReallySimpleExampleVC.swift; sourceTree = "<group>"; };
+		B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSwitchersVC.swift; sourceTree = "<group>"; };
+		E5D8FC6F0BB205065786B958 /* Pods-Switchcraft_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example.release.xcconfig"; sourceTree = "<group>"; };
+		EC63BF8F5A17C9E6E10268F7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA4588AD027FD3448E31184D /* Pods_Switchcraft_Example.framework in Frameworks */,
+				143587159F503AA10AE3E826 /* Pods_Switchcraft_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,13 +64,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				835FC5099FD0206E7BFF0AE3 /* Pods_Switchcraft_Tests.framework in Frameworks */,
+				3B140D9EF6C96C79EAF96077 /* Pods_Switchcraft_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40A764162A9F7DDC5D8985DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FADDFD5C99F4DA8405B8AD7 /* Pods_Switchcraft_Example.framework */,
+				3E909A755FE2C9AD45617714 /* Pods_Switchcraft_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -78,8 +87,8 @@
 				607FACD21AFB9204008FA782 /* Example for Switchcraft */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				797BF8FA3A4133DD7DDCCD1B /* Pods */,
-				DE0A2B12F21C47BC16D049D6 /* Frameworks */,
+				F1B0A4D1F59BF795D1100086 /* Pods */,
+				40A764162A9F7DDC5D8985DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,9 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				B382B0032097B47800ABAAD1 /* MultipleSwitchersVC.swift */,
-				607FACD71AFB9204008FA782 /* ReallySimpleExampleVC.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */,
+				B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -135,31 +144,22 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				C5E3101CD5D746806E67EB9A /* Switchcraft.podspec */,
-				A9A89A40CF6A453D49ACA194 /* README.md */,
-				B1A92E93E24E3164ED2D250D /* LICENSE */,
+				708AF71E8D2722F9771F9726 /* Switchcraft.podspec */,
+				EC63BF8F5A17C9E6E10268F7 /* README.md */,
+				A811DE5F400C048FF246F672 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		797BF8FA3A4133DD7DDCCD1B /* Pods */ = {
+		F1B0A4D1F59BF795D1100086 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				219E0D7FDE736D6F811002D0 /* Pods-Switchcraft_Example.debug.xcconfig */,
-				7A35DD3B6AFB254EDDC53FA5 /* Pods-Switchcraft_Example.release.xcconfig */,
-				D91203AEDFD3A072B66447FC /* Pods-Switchcraft_Tests.debug.xcconfig */,
-				AEC05A08FB7EDE78909E4086 /* Pods-Switchcraft_Tests.release.xcconfig */,
+				368B83D481CC79B100F8DEDE /* Pods-Switchcraft_Example.debug.xcconfig */,
+				E5D8FC6F0BB205065786B958 /* Pods-Switchcraft_Example.release.xcconfig */,
+				047FED48177DE060DD806E27 /* Pods-Switchcraft_Tests.debug.xcconfig */,
+				29512DBAB7E1166B48369709 /* Pods-Switchcraft_Tests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		DE0A2B12F21C47BC16D049D6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3EA1754AE526B95FE3E5772C /* Pods_Switchcraft_Example.framework */,
-				494E8301EBE278E994C46B64 /* Pods_Switchcraft_Tests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,12 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Switchcraft_Example" */;
 			buildPhases = (
-				D68F4C2AE91F4BE2AE99EDCC /* [CP] Check Pods Manifest.lock */,
+				39AAE2DFE820D49A99AFCF3A /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				A4558E043789B7EBD1775FF3 /* [CP] Embed Pods Frameworks */,
-				68CC8E3AC04BFB37A30D713D /* [CP] Copy Pods Resources */,
+				8EC17414B46CFB62F4DD4BB3 /* [CP] Embed Pods Frameworks */,
+				D649EB4E55C5AC0D4B3E9165 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -189,12 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Switchcraft_Tests" */;
 			buildPhases = (
-				F9267B1920A3ACBC281D6BEB /* [CP] Check Pods Manifest.lock */,
+				EA84A050892F11F4A58630B7 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				33325B80C1BA6164ADFE1625 /* [CP] Embed Pods Frameworks */,
-				59404C09650889726E20AFDF /* [CP] Copy Pods Resources */,
+				42AAF001B9302AF8405B7FB0 /* [CP] Embed Pods Frameworks */,
+				99AA5BECDEDFAD1A829055C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,12 +218,10 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = GH868RP95T;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = GH868RP95T;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -269,70 +267,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		33325B80C1BA6164ADFE1625 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		59404C09650889726E20AFDF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		68CC8E3AC04BFB37A30D713D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A4558E043789B7EBD1775FF3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Switchcraft/Switchcraft.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Switchcraft.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D68F4C2AE91F4BE2AE99EDCC /* [CP] Check Pods Manifest.lock */ = {
+		39AAE2DFE820D49A99AFCF3A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -350,7 +285,70 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F9267B1920A3ACBC281D6BEB /* [CP] Check Pods Manifest.lock */ = {
+		42AAF001B9302AF8405B7FB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EC17414B46CFB62F4DD4BB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Switchcraft/Switchcraft.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Switchcraft.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99AA5BECDEDFAD1A829055C1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D649EB4E55C5AC0D4B3E9165 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA84A050892F11F4A58630B7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,8 +373,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B382B0042097B47800ABAAD1 /* MultipleSwitchersVC.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ReallySimpleExampleVC.swift in Sources */,
+				B3860FF7209A67B8001D51DE /* ReallySimpleExampleVC.swift in Sources */,
+				B3860FF8209A67B8001D51DE /* MultipleSwitchersVC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,10 +522,9 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 219E0D7FDE736D6F811002D0 /* Pods-Switchcraft_Example.debug.xcconfig */;
+			baseConfigurationReference = 368B83D481CC79B100F8DEDE /* Pods-Switchcraft_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GH868RP95T;
 				INFOPLIST_FILE = Switchcraft/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -540,10 +537,9 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A35DD3B6AFB254EDDC53FA5 /* Pods-Switchcraft_Example.release.xcconfig */;
+			baseConfigurationReference = E5D8FC6F0BB205065786B958 /* Pods-Switchcraft_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GH868RP95T;
 				INFOPLIST_FILE = Switchcraft/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -556,13 +552,9 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D91203AEDFD3A072B66447FC /* Pods-Switchcraft_Tests.debug.xcconfig */;
+			baseConfigurationReference = 047FED48177DE060DD806E27 /* Pods-Switchcraft_Tests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = GH868RP95T;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -578,13 +570,9 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEC05A08FB7EDE78909E4086 /* Pods-Switchcraft_Tests.release.xcconfig */;
+			baseConfigurationReference = 29512DBAB7E1166B48369709 /* Pods-Switchcraft_Tests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = GH868RP95T;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
