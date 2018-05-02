@@ -103,6 +103,13 @@ public class Switchcraft {
     }
 
     /**
+     * Gets the name changes are broadcast to `NotificationCenter` with.
+     */
+    public var notificationName: Notification.Name {
+        return config.broadcastName
+    }
+
+    /**
      * Check if the current endpoint is the default one.
      */
     public var isDefaultEndpoint: Bool {
@@ -261,7 +268,7 @@ public class Switchcraft {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
         if config.shouldBroadcastEndpointChange {
-            NotificationCenter.default.post(name: config.broadcastName, object: endpoint)
+            NotificationCenter.default.post(name: config.broadcastName, object: nil, userInfo: ["endpoint": endpoint])
         }
     }
 
