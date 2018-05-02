@@ -25,22 +25,66 @@ It is designed to be dropped in to an exsting project and forgot about, but also
 ### Managing a Single Instance
 
 The simplest way to use Switchcraft is to declare a single global instance, we recommend in your `AppDelegate.swift`, as follows:
-```
+```swift
 extension Switchcraft {
     static let shared = Switchcraft(config: /*..*/)
 }
 ```
 Then, from your ViewController where you'd like to show the picker, all you need to do is attach the `Switchcraft` gesture recognizer to a view controller:
-```
+```swift
 Switchcraft.shared.attachGesture(to: self)
 ```
 Then you can retrieve the current endpoint from anywhere with
-```
+```swift
 Switchcraft.shared.endpoint
 ```
 
 To see this in action, check out the [ReallySimpleExampleVC](https://github.com/steamclock/switchcraft/blob/master/Example/Switchcraft/ReallySimpleExampleVC.swift).
 
+### Keeping Current
+
+To get updates whenever an endpoint is changed, you've got two options:
+
+1. Delegation
+
+    If you only need to keep track of changes to the current endpoint in a single place, this is probably the way to go.
+    Classes that want to recieve updates only need to register your `viewController` as a delegate and conform to the `SwitchcraftDelegate` protocol.
+
+    ```
+    class MyVC: UIViewController {
+        // ...
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            Switchcraft.delegate = self
+        }
+    }
+    
+    extension MyVC: SwitchcraftDelegate {
+        func switchcraft(_ switchcraft: Switchcraft, didChangeEndpointTo newEndpoint: Endpoint) {
+            // Handle your endpoint changing here
+        }
+    }
+    ```
+
+2. `NotificationCenter`
+
+    By default, changes to the current endpoint will also be broadcast to the `NotificationCenter`. 
+    
+    ```
+    NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: Switchcraft.shared.notificationName, object: nil)
+    
+    ...
+    
+    @objc private func endpointChanged(_ sender: NSNotification) {
+        guard let endpoint = sender.userInfo as? [String: Endpoint] else {
+            return
+        }
+        // Handle endpoint changed here
+    }
+    ```
+    
 ### Getting Fancy
 
 There are lots of knobs to tweak in your config. See [Config.swift](https://github.com/steamclock/switchcraft/blob/master/Switchcraft/Classes/Config.swift) for a full list.
