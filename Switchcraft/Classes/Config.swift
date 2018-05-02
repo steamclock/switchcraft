@@ -9,8 +9,7 @@
 import Foundation
 
 /**
- * Handles config options for Switchcraft instances.
- * Must be passed into a new instance.
+ * Handles config options for a Switchcraft instance.
  */
 public struct Config {
 
@@ -28,7 +27,7 @@ public struct Config {
 
     /**
      * The alert view message.
-     * Default is nil.
+     * Default is `nil`.
      */
     public var alertMessage: String?
 
@@ -40,7 +39,7 @@ public struct Config {
 
     /**
      * The alert view text field submit button.
-     * Default is "Done".
+     * Default is "Use Custom".
      */
     public var textFieldDoneTitle = "Use Custom"
 
@@ -52,7 +51,7 @@ public struct Config {
 
     /**
      * Whether the alert view will show a text field allowing custom entry.
-     * Default is false.
+     * Default is `false`.
      */
     public var allowCustom = false
 
@@ -63,13 +62,14 @@ public struct Config {
 
     /**
      * The index of the default endpoint in `endpoints`.
+     * Default is `0`.
      * If this index is invalid for any reason it will default to the first endpoint.
      */
     public var defaultEndpointIndex: Int = 0
 
     /**
      * Determines if endpoint changes should be broadcast through `NotificationCenter`.
-     * Default is true.
+     * Default is `true`.
      */
     public var shouldBroadcastEndpointChange: Bool = true
 
@@ -87,8 +87,9 @@ public struct Config {
     }
 
     /**
-     * Create a new config with a set of endpoints.
+     * Create a new config with a set of endpoints and key.
      *
+     * - parameter defaultsKey: The key to store the endpoint under in `UserDefaults`.
      * - parameter endpoints: The set of endpoints to show in the picker.
      * - parameter allowCustom: Whether the switcher allows entering custom endpoints.
      */
