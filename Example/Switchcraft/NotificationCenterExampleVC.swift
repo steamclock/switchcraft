@@ -18,7 +18,7 @@ class NotificationCenterExampleVC: UIViewController {
 
         Switchcraft.shared.attachGesture(to: self)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: .SwitchcraftDidChangeEndpoint, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(endpointSelected(_:)), name: .SwitchcraftDidSelectEndpoint, object: nil)
     }
 
     @IBAction func visitEndpoint(_ sender: UIButton) {
@@ -26,7 +26,7 @@ class NotificationCenterExampleVC: UIViewController {
         self.present(SFSafariViewController(url: endpoint.url), animated: true, completion: nil)
     }
 
-    @objc private func endpointChanged(_ sender: NSNotification) {
+    @objc private func endpointSelected(_ sender: NSNotification) {
         guard let endpoint = sender.userInfo?[Notification.Key.Endpoint] as? Endpoint else {
             return
         }

@@ -21,10 +21,10 @@ extension Notification {
 
 extension Notification.Name {
     /**
-     * Posted when the chosen endpoint is changed.
+     * Posted when an `Endpoint` is selected.
      * The notification `object` contains a reference to the `Switchcraft` instance that sent it.
-     * The `UserInfo` dictionary contains an Endpoint accessed with the key `endpointDidChangeUserInfoKey`.
+     * The `UserInfo` dictionary contains an Endpoint accessed with the key `Notification.Key.Endpoint`
      */
-    public static let SwitchcraftDidChangeEndpoint = Notification.Name("switchcraftDidChangeEndpoint")
+    public static let SwitchcraftDidSelectEndpoint = Notification.Name("switchcraftDidSelectEndpoint")
 
 }
