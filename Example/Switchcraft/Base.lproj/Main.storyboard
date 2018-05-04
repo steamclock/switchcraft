@@ -11,6 +11,50 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Notification Center-->
+        <scene sceneID="Ftr-3i-EhO">
+            <objects>
+                <viewController id="EDb-8F-bd8" customClass="NotificationCenterExampleVC" customModule="Switchcraft_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sYn-xu-93a"/>
+                        <viewControllerLayoutGuide type="bottom" id="XAU-sQ-oK6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ckF-qE-C3I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elF-kB-u2Q">
+                                <rect key="frame" x="36" y="598" width="303" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lt2-g8-OhO">
+                                <rect key="frame" x="136" y="318" width="102" height="30"/>
+                                <state key="normal" title="Show Selected"/>
+                                <connections>
+                                    <action selector="visitEndpoint:" destination="EDb-8F-bd8" eventType="touchUpInside" id="WyX-Zb-3vG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lt2-g8-OhO" firstAttribute="centerY" secondItem="ckF-qE-C3I" secondAttribute="centerY" id="7Nf-dB-pCu"/>
+                            <constraint firstItem="XAU-sQ-oK6" firstAttribute="top" secondItem="elF-kB-u2Q" secondAttribute="bottom" constant="20" id="D7T-XQ-VZc"/>
+                            <constraint firstItem="Lt2-g8-OhO" firstAttribute="centerX" secondItem="ckF-qE-C3I" secondAttribute="centerX" id="E0I-jO-Z8l"/>
+                            <constraint firstItem="elF-kB-u2Q" firstAttribute="leading" secondItem="ckF-qE-C3I" secondAttribute="leadingMargin" constant="20" id="VEq-yV-hhC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="elF-kB-u2Q" secondAttribute="trailing" constant="20" id="aWm-5p-WjY"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Notification Center" id="vY4-Oy-R6A"/>
+                    <connections>
+                        <outlet property="currentEndpointLabel" destination="elF-kB-u2Q" id="GXr-gM-43Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zgG-cZ-YJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="-531"/>
+        </scene>
         <!--Really Simple-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -130,12 +174,14 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wot-sv-RFA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4xq-eB-XQz">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="Zxk-u1-Sx2"/>
                         <segue destination="gDU-v3-A4Y" kind="relationship" relationship="viewControllers" id="vgl-tD-YVc"/>
+                        <segue destination="EDb-8F-bd8" kind="relationship" relationship="viewControllers" id="voC-yI-0jl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCd-iS-hN8" userLabel="First Responder" sceneMemberID="firstResponder"/>

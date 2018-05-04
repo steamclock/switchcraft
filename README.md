@@ -43,7 +43,7 @@ To see this in action, check out the [ReallySimpleExampleVC](https://github.com/
 
 ### Keeping Current
 
-To get updates whenever an endpoint is changed, you've got two options:
+To get updates whenever an endpoint is selected, you've got two options:
 
 1. Delegation
 
@@ -62,26 +62,26 @@ To get updates whenever an endpoint is changed, you've got two options:
     }
     
     extension MyVC: SwitchcraftDelegate {
-        func switchcraft(_ switchcraft: Switchcraft, didChangeEndpointTo newEndpoint: Endpoint) {
-            // Handle your endpoint changing here
+        func switchcraft(_ switchcraft: Switchcraft, didSelectEndpoint endpoint: Endpoint) {
+            // Handle your endpoint selection here
         }
     }
     ```
 
 2. `NotificationCenter`
 
-    By default, changes to the current endpoint will also be broadcast to the `NotificationCenter`. 
+    Endpoint selections are also broadcast to the `NotificationCenter`. 
     
     ```
-    NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: Switchcraft.shared.notificationName, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(endpointSelected(_:)), name: .SwitchcraftDidSelectEndpoint, object: nil)
     
     ...
     
-    @objc private func endpointChanged(_ sender: NSNotification) {
-        guard let endpoint = sender.userInfo as? [String: Endpoint] else {
+    @objc private func endpointSelected(_ sender: NSNotification) {
+        guard let endpoint = sender.userInfo?[Notification.Key.Endpoint] as? Endpoint else {
             return
         }
-        // Handle endpoint changed here
+        // Handle endpoint selected here
     }
     ```
     

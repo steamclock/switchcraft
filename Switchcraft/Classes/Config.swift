@@ -68,25 +68,6 @@ public struct Config {
     public var defaultEndpointIndex: Int = 0
 
     /**
-     * Determines if endpoint changes should be broadcast through `NotificationCenter`.
-     * Default is `true`.
-     */
-    public var shouldBroadcastEndpointChange: Bool = true
-
-    /**
-     * The notification name to be used when an endpoint change is broadcasted through `NotificationCenter`.
-     * Default is "endpointChanged"
-     */
-    public var notificationName: String = "endpointChanged"
-
-    /**
-     * Wrapper for the `notificationName` to be used with `NotificationCenter`.
-     */
-    internal var broadcastName: Notification.Name {
-        return Notification.Name(notificationName)
-    }
-
-    /**
      * Create a new config with a set of endpoints and key.
      *
      * - parameter defaultsKey: The key to store the endpoint under in `UserDefaults`.

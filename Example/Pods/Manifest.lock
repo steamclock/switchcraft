@@ -6,11 +6,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Switchcraft:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Switchcraft: 7e0ea98c07d2225d442a83d321604e292bae9ff1
+  Switchcraft: e4c09e4038ab66c2e7067e9d93b883c9f0f8f629
 
 PODFILE CHECKSUM: 4e47c647d9d1a9742b112d7e3839344f8d22be3c
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.0

@@ -27,8 +27,8 @@ class ReallySimpleExampleVC: UIViewController {
 }
 
 extension ReallySimpleExampleVC: SwitchcraftDelegate {
-    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpointTo newEndpoint: Endpoint) {
-        currentEndpointLabel.isHidden = newEndpoint == switchcraft.defaultEndpoint
-        currentEndpointLabel.text = "Current Endpoint:\n\(newEndpoint.name)"
+    func switchcraft(_ switchcraft: Switchcraft, didSelectEndpoint endpoint: Endpoint) {
+        currentEndpointLabel.isHidden = endpoint == switchcraft.defaultEndpoint
+        currentEndpointLabel.text = "Current Endpoint:\n\(endpoint.name)"
     }
 }

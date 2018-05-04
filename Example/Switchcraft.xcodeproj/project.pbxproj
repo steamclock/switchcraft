@@ -16,6 +16,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		B3860FF7209A67B8001D51DE /* ReallySimpleExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */; };
 		B3860FF8209A67B8001D51DE /* MultipleSwitchersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */; };
+		B3D8D3C0209CCAAD0007B238 /* NotificationCenterExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8D3BF209CCAAD0007B238 /* NotificationCenterExampleVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A811DE5F400C048FF246F672 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReallySimpleExampleVC.swift; sourceTree = "<group>"; };
 		B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSwitchersVC.swift; sourceTree = "<group>"; };
+		B3D8D3BF209CCAAD0007B238 /* NotificationCenterExampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExampleVC.swift; sourceTree = "<group>"; };
 		E5D8FC6F0BB205065786B958 /* Pods-Switchcraft_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EC63BF8F5A17C9E6E10268F7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */,
+				B3D8D3BF209CCAAD0007B238 /* NotificationCenterExampleVC.swift */,
 				B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -174,7 +177,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				8EC17414B46CFB62F4DD4BB3 /* [CP] Embed Pods Frameworks */,
-				D649EB4E55C5AC0D4B3E9165 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,8 +195,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				42AAF001B9302AF8405B7FB0 /* [CP] Embed Pods Frameworks */,
-				99AA5BECDEDFAD1A829055C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,21 +285,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		42AAF001B9302AF8405B7FB0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8EC17414B46CFB62F4DD4BB3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,36 +301,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		99AA5BECDEDFAD1A829055C1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Tests/Pods-Switchcraft_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D649EB4E55C5AC0D4B3E9165 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA84A050892F11F4A58630B7 /* [CP] Check Pods Manifest.lock */ = {
@@ -376,6 +331,7 @@
 				B3860FF7209A67B8001D51DE /* ReallySimpleExampleVC.swift in Sources */,
 				B3860FF8209A67B8001D51DE /* MultipleSwitchersVC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				B3D8D3C0209CCAAD0007B238 /* NotificationCenterExampleVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

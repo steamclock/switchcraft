@@ -7,13 +7,13 @@
 //
 
 /**
- * Protocol allowing conforming objects to monitor changes to the selected endpoint.
+ * Protocol allowing conforming objects to monitor endpoint selection.
  */
 public protocol SwitchcraftDelegate: AnyObject {
     /**
-     * Called whenever the selected endpoint changes.
+     * Called when an endpoint is selected.
      */
-    func switchcraft(_ switchcraft: Switchcraft, didChangeEndpointTo newEndpoint: Endpoint)
+    func switchcraft(_ switchcraft: Switchcraft, didSelectEndpoint endpoint: Endpoint)
 }
 
 /**
@@ -80,7 +80,7 @@ public class Switchcraft {
     // MARK: - Public Declarations
 
     /**
-     * Delegate to receive updates for changes to the selected endpoint.
+     * Delegate to receive updates for endpoint selection.
      */
     public weak var delegate: SwitchcraftDelegate?
 
@@ -100,13 +100,6 @@ public class Switchcraft {
                 UserDefaults.standard.set(encoded, forKey: config.defaultsKey)
             }
         }
-    }
-
-    /**
-     * Gets the name changes are broadcast to `NotificationCenter` with.
-     */
-    public var notificationName: Notification.Name {
-        return config.broadcastName
     }
 
     /**
@@ -141,7 +134,7 @@ public class Switchcraft {
 
         // Notify the delegate of the current endpoint after attaching to it.
         if let currentEndpoint = endpoint {
-            delegate?.switchcraft(self, didChangeEndpointTo: currentEndpoint)
+            selected(endpoint: currentEndpoint)
         }
     }
 
@@ -260,16 +253,14 @@ public class Switchcraft {
     }
 
     /**
-     * Called when a new endpoint is selected, propogate to the delegate and store the new endpoint.
+     * Called when a new endpoint is selected, broadcast the selection and store the new endpoint.
      *
      * - parameter endpoint: The new endpoint to save.
      */
     private func selected(endpoint: Endpoint) {
         self.endpoint = endpoint
-        delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
-        if config.shouldBroadcastEndpointChange {
-            NotificationCenter.default.post(name: config.broadcastName, object: nil, userInfo: ["endpoint": endpoint])
-        }
+        delegate?.switchcraft(self, didSelectEndpoint: endpoint)
+        NotificationCenter.default.post(name: .SwitchcraftDidSelectEndpoint, object: self, userInfo: [Notification.Key.Endpoint: endpoint])
     }
 
     /**
