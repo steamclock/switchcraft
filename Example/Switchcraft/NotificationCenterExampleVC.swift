@@ -27,7 +27,7 @@ class NotificationCenterExampleVC: UIViewController {
     }
 
     @objc private func endpointChanged(_ sender: NSNotification) {
-        guard let endpoint = sender.userInfo?[Switchcraft.endpointDidChangeUserInfoKey] as? Endpoint else {
+        guard let endpoint = sender.userInfo?[Switchcraft.endpointUserInfoKey] as? Endpoint else {
             return
         }
 

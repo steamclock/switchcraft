@@ -59,7 +59,7 @@ public class Switchcraft {
     /**
      * The key whose value contains an `Endpoint`. Sent by the `endpointDidChange` notification.
      */
-    public static let endpointDidChangeUserInfoKey = "switchcraftEndpoint"
+    public static let endpointUserInfoKey = "switchcraftEndpoint"
 
     // MARK: - Private Declarations
 
@@ -267,7 +267,7 @@ public class Switchcraft {
     private func selected(endpoint: Endpoint) {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
-        NotificationCenter.default.post(name: .switchCraftDidChangeEndpoint, object: self, userInfo: [Switchcraft.endpointDidChangeUserInfoKey: endpoint])
+        NotificationCenter.default.post(name: .switchCraftDidChangeEndpoint, object: self, userInfo: [Switchcraft.endpointUserInfoKey: endpoint])
     }
 
     /**
@@ -294,7 +294,8 @@ public class Switchcraft {
 
 extension Notification.Name {
     /**
-     * Posted through `NotificationCenter` when the chosen endpoint is changed.
+     * Posted when the chosen endpoint is changed.
+     * The notification `object` contains a reference to the `Switchcraft` instance that sent it.
      * The `UserInfo` dictionary contains an Endpoint accessed with the key `endpointDidChangeUserInfoKey`.
      */
     public static let switchCraftDidChangeEndpoint = Notification.Name("switchCraftDidChangeEndpoint")
