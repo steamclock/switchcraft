@@ -18,7 +18,7 @@ class NotificationCenterExampleVC: UIViewController {
 
         Switchcraft.shared.attachGesture(to: self)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: .switchCraftDidChangeEndpoint, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: .SwitchCraftDidChangeEndpoint, object: nil)
     }
 
     @IBAction func visitEndpoint(_ sender: UIButton) {
@@ -27,7 +27,7 @@ class NotificationCenterExampleVC: UIViewController {
     }
 
     @objc private func endpointChanged(_ sender: NSNotification) {
-        guard let endpoint = sender.userInfo?[Switchcraft.endpointUserInfoKey] as? Endpoint else {
+        guard let endpoint = sender.userInfo?[Notification.Key.Endpoint] as? Endpoint else {
             return
         }
 
