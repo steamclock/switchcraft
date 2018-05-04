@@ -57,12 +57,6 @@ public class Switchcraft {
     // MARK: - Static Declarations
 
     /**
-     * Posted through `NotificationCenter` when the chosen endpoint is changed.
-     * The `UserInfo` dictionary contains an Endpoint accessed with the key `endpointDidChangeUserInfoKey`.
-     */
-    public static let endpointDidChange = Notification.Name("switchcraftDidChangeEndpoint")
-
-    /**
      * The key whose value contains an `Endpoint`. Sent by the `endpointDidChange` notification.
      */
     public static let endpointDidChangeUserInfoKey = "switchcraftEndpoint"
@@ -273,7 +267,7 @@ public class Switchcraft {
     private func selected(endpoint: Endpoint) {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
-        NotificationCenter.default.post(name: Switchcraft.endpointDidChange, object: self, userInfo: [Switchcraft.endpointDidChangeUserInfoKey: endpoint])
+        NotificationCenter.default.post(name: .switchCraftDidChangeEndpoint, object: self, userInfo: [Switchcraft.endpointDidChangeUserInfoKey: endpoint])
     }
 
     /**
@@ -296,4 +290,13 @@ public class Switchcraft {
         defaultGesture.numberOfTouchesRequired = isSimulator ? 1 : 3
         return defaultGesture
     }
+}
+
+extension Notification.Name {
+    /**
+     * Posted through `NotificationCenter` when the chosen endpoint is changed.
+     * The `UserInfo` dictionary contains an Endpoint accessed with the key `endpointDidChangeUserInfoKey`.
+     */
+    public static let switchCraftDidChangeEndpoint = Notification.Name("switchCraftDidChangeEndpoint")
+
 }
