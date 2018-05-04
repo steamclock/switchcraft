@@ -73,7 +73,7 @@ To get updates whenever an endpoint is changed, you've got two options:
     Changes to the current endpoint are also broadcast to the `NotificationCenter`. 
     
     ```
-    NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: .SwitchCraftDidChangeEndpoint, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: .SwitchcraftDidChangeEndpoint, object: nil)
     
     ...
     

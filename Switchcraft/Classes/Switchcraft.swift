@@ -260,7 +260,7 @@ public class Switchcraft {
     private func selected(endpoint: Endpoint) {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
-        NotificationCenter.default.post(name: .SwitchCraftDidChangeEndpoint, object: self, userInfo: [Notification.Key.Endpoint: endpoint])
+        NotificationCenter.default.post(name: .SwitchcraftDidChangeEndpoint, object: self, userInfo: [Notification.Key.Endpoint: endpoint])
     }
 
     /**

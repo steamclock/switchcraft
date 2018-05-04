@@ -1,6 +1,6 @@
 //
 //  Notification.swift
-//  Alamofire
+//  Switchcraft
 //
 //  Created by Brendan Lensink on 2018-05-04.
 //
@@ -25,6 +25,6 @@ extension Notification.Name {
      * The notification `object` contains a reference to the `Switchcraft` instance that sent it.
      * The `UserInfo` dictionary contains an Endpoint accessed with the key `endpointDidChangeUserInfoKey`.
      */
-    public static let SwitchCraftDidChangeEndpoint = Notification.Name("switchCraftDidChangeEndpoint")
+    public static let SwitchcraftDidChangeEndpoint = Notification.Name("switchcraftDidChangeEndpoint")
 
 }
