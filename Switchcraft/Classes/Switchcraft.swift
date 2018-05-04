@@ -54,6 +54,19 @@ public class Switchcraft {
         }
     }
 
+    // MARK: - Static Declarations
+
+    /**
+     * Posted through `NotificationCenter` when the chosen endpoint is changed.
+     * The `UserInfo` dictionary contains an Endpoint accessed with the key `endpointDidChangeUserInfoKey`.
+     */
+    public static let endpointDidChange = Notification.Name("switchcraftDidChangeEndpoint")
+
+    /**
+     * The key whose value contains an `Endpoint`. Sent by the `endpointDidChange` notification.
+     */
+    public static let endpointDidChangeUserInfoKey = "switchcraftEndpoint"
+
     // MARK: - Private Declarations
 
     /**
@@ -103,13 +116,6 @@ public class Switchcraft {
     }
 
     /**
-     * Gets the name changes are broadcast to `NotificationCenter` with.
-     */
-    public var notificationName: Notification.Name {
-        return config.notificationName
-    }
-
-    /**
      * Check if the current endpoint is the default one.
      */
     public var isDefaultEndpoint: Bool {
@@ -141,7 +147,7 @@ public class Switchcraft {
 
         // Notify the delegate of the current endpoint after attaching to it.
         if let currentEndpoint = endpoint {
-            delegate?.switchcraft(self, didChangeEndpointTo: currentEndpoint)
+            selected(endpoint: currentEndpoint)
         }
     }
 
@@ -260,14 +266,14 @@ public class Switchcraft {
     }
 
     /**
-     * Called when a new endpoint is selected, propogate to the delegate and store the new endpoint.
+     * Called when a new endpoint is selected, broadcast the change and store the new endpoint.
      *
      * - parameter endpoint: The new endpoint to save.
      */
     private func selected(endpoint: Endpoint) {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
-        NotificationCenter.default.post(name: config.notificationName, object: self, userInfo: ["endpoint": endpoint])
+        NotificationCenter.default.post(name: Switchcraft.endpointDidChange, object: self, userInfo: [Switchcraft.endpointDidChangeUserInfoKey: endpoint])
     }
 
     /**

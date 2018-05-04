@@ -16,6 +16,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		B3860FF7209A67B8001D51DE /* ReallySimpleExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */; };
 		B3860FF8209A67B8001D51DE /* MultipleSwitchersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */; };
+		B3D8D3C0209CCAAD0007B238 /* NotificationCenterExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8D3BF209CCAAD0007B238 /* NotificationCenterExampleVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A811DE5F400C048FF246F672 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReallySimpleExampleVC.swift; sourceTree = "<group>"; };
 		B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSwitchersVC.swift; sourceTree = "<group>"; };
+		B3D8D3BF209CCAAD0007B238 /* NotificationCenterExampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExampleVC.swift; sourceTree = "<group>"; };
 		E5D8FC6F0BB205065786B958 /* Pods-Switchcraft_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switchcraft_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EC63BF8F5A17C9E6E10268F7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */,
+				B3D8D3BF209CCAAD0007B238 /* NotificationCenterExampleVC.swift */,
 				B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -376,6 +379,7 @@
 				B3860FF7209A67B8001D51DE /* ReallySimpleExampleVC.swift in Sources */,
 				B3860FF8209A67B8001D51DE /* MultipleSwitchersVC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				B3D8D3C0209CCAAD0007B238 /* NotificationCenterExampleVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

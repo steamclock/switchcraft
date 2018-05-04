@@ -70,15 +70,15 @@ To get updates whenever an endpoint is changed, you've got two options:
 
 2. `NotificationCenter`
 
-    By default, changes to the current endpoint will also be broadcast to the `NotificationCenter`. 
+    Changes to the current endpoint are also broadcast to the `NotificationCenter`. 
     
     ```
-    NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: Switchcraft.shared.notificationName, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(endpointChanged(_:)), name: Switchcraft.endpointDidChange, object: nil)
     
     ...
     
     @objc private func endpointChanged(_ sender: NSNotification) {
-        guard let endpoint = sender.userInfo as? [String: Endpoint] else {
+        guard let endpoint = sender.userInfo?[Switchcraft.endpointDidChangeUserInfoKey] as? Endpoint else {
             return
         }
         // Handle endpoint changed here
