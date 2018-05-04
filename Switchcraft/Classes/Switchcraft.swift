@@ -267,7 +267,7 @@ public class Switchcraft {
     private func selected(endpoint: Endpoint) {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
-        NotificationCenter.default.post(name: config.notificationName, object: nil, userInfo: ["endpoint": endpoint])
+        NotificationCenter.default.post(name: config.notificationName, object: self, userInfo: ["endpoint": endpoint])
     }
 
     /**
