@@ -74,17 +74,9 @@ public struct Config {
     public var shouldBroadcastEndpointChange: Bool = true
 
     /**
-     * The notification name to be used when an endpoint change is broadcasted through `NotificationCenter`.
-     * Default is "endpointChanged"
+     * The notification name to be used when an endpoint change is broadcast through `NotificationCenter`.
      */
-    public var notificationName: String = "endpointChanged"
-
-    /**
-     * Wrapper for the `notificationName` to be used with `NotificationCenter`.
-     */
-    internal var broadcastName: Notification.Name {
-        return Notification.Name(notificationName)
-    }
+    public let notificationName: Notification.Name = Notification.Name("switchcraftDidChangeEndpoint")
 
     /**
      * Create a new config with a set of endpoints and key.

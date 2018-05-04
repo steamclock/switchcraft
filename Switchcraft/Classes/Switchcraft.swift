@@ -106,7 +106,7 @@ public class Switchcraft {
      * Gets the name changes are broadcast to `NotificationCenter` with.
      */
     public var notificationName: Notification.Name {
-        return config.broadcastName
+        return config.notificationName
     }
 
     /**
@@ -267,9 +267,7 @@ public class Switchcraft {
     private func selected(endpoint: Endpoint) {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didChangeEndpointTo: endpoint)
-        if config.shouldBroadcastEndpointChange {
-            NotificationCenter.default.post(name: config.broadcastName, object: nil, userInfo: ["endpoint": endpoint])
-        }
+        NotificationCenter.default.post(name: config.notificationName, object: nil, userInfo: ["endpoint": endpoint])
     }
 
     /**
