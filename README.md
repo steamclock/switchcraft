@@ -18,7 +18,7 @@
 
 Switchcraft is a simple tool designed to make switching between different endpoints a breeze.
 
-It is designed to be dropped in to an exsting project and forgot about, but also supports configuring multiple instances and lots of other neat things.
+It is designed to be dropped in to an existing project and forgotten, but also supports configuring multiple instances and lots of other neat things.
 
 ## Usage
 
