@@ -37,9 +37,9 @@ class MultipleSwitchersVC: UIViewController {
         let secondConfig = Config(
             defaultsKey: "secondEndpoint",
             endpoints: [
-                Endpoint(title: "Musical Dogs", url: URL(string: "https://en.wikipedia.org/wiki/Dogs_(Pink_Floyd_song)")!),
-                Endpoint(title: "Bright Dogs", url: URL(string: "https://en.wikipedia.org/wiki/Sun_dog")!),
-                Endpoint(title: "Dog Dogs 🐶", url: URL(string: "https://en.wikipedia.org/wiki/Dog")!)
+                Endpoint(title: "Production", url: URL(string: "https://en.wikipedia.org/wiki/Dogs_(Pink_Floyd_song)")!),
+                Endpoint(title: "QA", url: URL(string: "https://en.wikipedia.org/wiki/Sun_dog")!),
+                Endpoint(title: "Development", url: URL(string: "https://en.wikipedia.org/wiki/Dog")!)
             ]
         )
         secondSwitcher = Switchcraft(config: secondConfig)

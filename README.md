@@ -4,6 +4,9 @@
 [![License](https://img.shields.io/cocoapods/l/Switchcraft.svg?style=flat)](http://cocoapods.org/pods/Switchcraft)
 [![Platform](https://img.shields.io/cocoapods/p/Switchcraft.svg?style=flat)](http://cocoapods.org/pods/Switchcraft)
 
+![Switcher](demoImages/switcher.png?raw=true "Switcher")
+![Switcher with custom URL](demoImages/switcherCustom.png?raw=true "Switcher with custom  URL")
+
 ## Contents
 
 - [Description](#description)
