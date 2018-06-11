@@ -32,8 +32,9 @@ public struct Config {
     public var alertMessage: String? {
         if let bundle = Bundle.main.infoDictionary,
                 let displayName = bundle["CFBundleDisplayName"] as? String,
-                let versionString = bundle["CFBundleShortVersionString"] as? String {
-            return displayName + " " + versionString
+                let versionString = bundle["CFBundleShortVersionString"] as? String,
+                let buildNumber = bundle["CFBundleVersion"] as? String {
+            return displayName + " " + versionString + "-" + buildNumber
         }
         return nil
     }
