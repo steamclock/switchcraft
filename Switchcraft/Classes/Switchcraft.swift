@@ -14,6 +14,11 @@ public protocol SwitchcraftDelegate: AnyObject {
      * Called when an endpoint is selected.
      */
     func switchcraft(_ switchcraft: Switchcraft, didSelectEndpoint endpoint: Endpoint)
+
+    /**
+     * Called when an action is tapped.
+     */
+    func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action)
 }
 
 /**
@@ -196,8 +201,8 @@ public class Switchcraft {
                 UIAlertAction(
                     title: "Action: \(action.title)",
                     style: .default,
-                    handler: { _ in
-                        action.callback()
+                    handler: { [weak self] _ in
+                        self?.tapped(action: action)
                         viewController.dismiss(animated: false, completion: nil)
                     }
                 )
@@ -274,6 +279,15 @@ public class Switchcraft {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didSelectEndpoint: endpoint)
         NotificationCenter.default.post(name: .SwitchcraftDidSelectEndpoint, object: self, userInfo: [Notification.Key.Endpoint: endpoint])
+    }
+
+    /**
+     * Called when an action is tapped.
+     *
+     * - parameter action: The action tapped.
+     */
+    private func tapped(action: Action) {
+        delegate?.switchcraft(self, didTapAction: action)
     }
 
     /**

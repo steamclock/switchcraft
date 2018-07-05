@@ -28,12 +28,8 @@ extension Switchcraft {
             Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!)
         ],
         actions: [
-            Action(title: "Custom action 1") {
-                print("Tapped custom action 1")
-            },
-            Action(title: "Custom action 2") {
-                print("Tapped custom action 2")
-            }
+            Action(title: "Custom action 1", actionId: "custom1"),
+            Action(title: "Custom action 2", actionId: "custom2")
         ],
         allowCustom: true
     ))
