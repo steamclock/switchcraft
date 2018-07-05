@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Switchcraft'
-  s.version          = '0.1.3'
+  s.version          = '0.2.0'
   s.summary          = 'Drop and go endpoint selector written in Swift.'
   s.homepage         = 'https://github.com/steamclock/Switchcraft'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
