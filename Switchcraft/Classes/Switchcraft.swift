@@ -191,6 +191,19 @@ public class Switchcraft {
             })
         }
 
+        for action in config.actions {
+            alertController.addAction(
+                UIAlertAction(
+                    title: "Action: \(action.title)",
+                    style: .default,
+                    handler: { _ in
+                        action.callback()
+                        viewController.dismiss(animated: false, completion: nil)
+                    }
+                )
+            )
+        }
+
         alertController.addAction(
             UIAlertAction(
                 title: config.cancelTitle,
