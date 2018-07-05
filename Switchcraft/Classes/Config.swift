@@ -30,15 +30,15 @@ public struct Config {
      * Default is the current build name and version number.
      */
     public var alertMessage: String? {
-        if let bundle = Bundle.main.infoDictionary,
-                let displayName = bundle["CFBundleDisplayName"] as? String,
-                let versionString = bundle["CFBundleShortVersionString"] as? String,
-                let buildNumber = bundle["CFBundleVersion"] as? String {
-            return displayName + " " + versionString + "-" + buildNumber
+        guard let bundle = Bundle.main.infoDictionary,
+            let displayName = (bundle["CFBundleDisplayName"] as? String) ?? (bundle["CFBundleName"] as? String),
+            let versionString = bundle["CFBundleShortVersionString"] as? String,
+            let buildNumber = bundle["CFBundleVersion"] as? String else {
+                return nil
         }
-        return nil
-    }
 
+        return displayName + " " + versionString + "-" + buildNumber
+    }
     /**
      * The alert view text field placeholder.
      * Default is "Enter Value".
