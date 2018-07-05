@@ -27,6 +27,14 @@ extension Switchcraft {
             Endpoint(title: nil, url: URL(string: "http://apple.com")!),
             Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!)
         ],
+        actions: [
+            Action(title: "Custom action 1") {
+                print("Tapped custom action 1")
+            },
+            Action(title: "Custom action 2") {
+                print("Tapped custom action 2")
+            }
+        ],
         allowCustom: true
     ))
 }
