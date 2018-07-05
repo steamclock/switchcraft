@@ -68,6 +68,10 @@ To get updates whenever an endpoint is selected, you've got two options:
         func switchcraft(_ switchcraft: Switchcraft, didSelectEndpoint endpoint: Endpoint) {
             // Handle your endpoint selection here
         }
+        
+        func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action)
+            // Handle custom action selection here
+        }
     }
     ```
 
