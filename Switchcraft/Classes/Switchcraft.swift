@@ -21,6 +21,14 @@ public protocol SwitchcraftDelegate: AnyObject {
     func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action)
 }
 
+
+// provides a default extension, so other applications don't have to override the action handling
+extension SwitchcraftDelegate {
+    func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action) {
+        // no-op, allowing this method to be optional
+    }
+}
+
 /**
  * Switchcraft is a simple manager to make switching endpoints easier.
  *
