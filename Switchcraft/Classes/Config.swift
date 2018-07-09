@@ -69,6 +69,11 @@ public struct Config {
     public var endpoints: [Endpoint] = []
 
     /**
+     * The set of custom actions to be shown in the switcher.
+     */
+    public var actions: [Action] = []
+
+    /**
      * The index of the default endpoint in `endpoints`.
      * Default is `0`.
      * If this index is invalid for any reason it will default to the first endpoint.
@@ -82,9 +87,10 @@ public struct Config {
      * - parameter endpoints: The set of endpoints to show in the picker.
      * - parameter allowCustom: Whether the switcher allows entering custom endpoints.
      */
-    public init(defaultsKey: String, endpoints: [Endpoint], allowCustom: Bool = false) {
+    public init(defaultsKey: String, endpoints: [Endpoint], actions: [Action] = [], allowCustom: Bool = false) {
         self.defaultsKey = defaultsKey
         self.endpoints = endpoints
         self.allowCustom = allowCustom
+        self.actions = actions
     }
 }

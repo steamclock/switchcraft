@@ -31,4 +31,18 @@ extension ReallySimpleExampleVC: SwitchcraftDelegate {
         currentEndpointLabel.isHidden = endpoint == switchcraft.defaultEndpoint
         currentEndpointLabel.text = "Current Endpoint:\n\(endpoint.name)"
     }
+
+    func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action) {
+        guard let action = Actions(rawValue: action.actionId) else {
+            return
+        }
+
+        switch action {
+        case .custom1:
+            print("tapped action 1")
+        case .custom2:
+            print("tapped action 2")
+        }
+
+    }
 }
