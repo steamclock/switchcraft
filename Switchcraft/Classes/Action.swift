@@ -10,7 +10,7 @@ import Foundation
 /**
  * Represents an action that can be tapped using the `Switchcraft` picker.
  */
-public struct Action: Codable {
+public struct Action {
     /**
      * A title to be shown for the action.
      */
@@ -30,14 +30,5 @@ public struct Action: Codable {
     public init(title: String, actionId: String) {
         self.title = title
         self.actionId = actionId
-    }
-}
-
-extension Action: Equatable {
-    /**
-     * Check equality between two Action.
-     */
-    public static func == (lhs: Action, rhs: Action) -> Bool {
-        return lhs.actionId == rhs.actionId
     }
 }
