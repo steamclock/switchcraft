@@ -68,10 +68,6 @@ To get updates whenever an endpoint is selected, you've got two options:
         func switchcraft(_ switchcraft: Switchcraft, didSelectEndpoint endpoint: Endpoint) {
             // Handle your endpoint selection here
         }
-        
-        func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action)
-            // Handle custom action selection here
-        }
     }
     ```
 
@@ -91,6 +87,72 @@ To get updates whenever an endpoint is selected, you've got two options:
         // Handle endpoint selected here
     }
     ```
+
+### Custom Actions
+
+1. Add some custom actions to Switchcraft via the `Config`:
+```swift
+extension Switchcraft {
+    static let shared = Switchcraft(config: Config(
+            defaultsKey: ...,
+            endpoints: ...,
+            actions: [
+                Action(title: "Custom action 1", actionId: "customAction1"),
+                Action(title: "Custom action 2", actionId: "customAction2")
+            ]
+        ))
+}
+```
+
+2. Add the following to your SwitchCraftDelegate:
+```swift
+extension MyVC: SwitchcraftDelegate {
+    ...
+ 
+    func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action)
+        // Handle custom action selection here
+    }
+}
+```
+
+Note: We recommend using Swift enums for the actionId, like the following example:
+```swift
+enum Actions: String {
+    case custom1
+    case custom2
+}
+
+extension Switchcraft {
+    static let shared = Switchcraft(config: Config(
+            defaultsKey: ...,
+            endpoints: ...,
+            actions: [
+                Action(title: "Custom action 1", actionId: Actions.custom1.rawValue),
+                Action(title: "Custom action 2", actionId: Actions.custom2.rawValue)
+            ]
+        ))
+}
+
+extension MyVC: SwitchcraftDelegate {
+    ...
+
+    func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action) {
+        guard let action = Actions(rawValue: action.actionId) else {
+            return
+        }
+
+        switch action {
+        case .custom1:
+            // handle the first custom action tapped
+            ...
+        case .custom2:
+            // handle the second custom action tapped
+            ...
+        }
+    }
+}
+
+```
     
 ### Getting Fancy
 
