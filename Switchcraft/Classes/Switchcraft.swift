@@ -199,7 +199,7 @@ public class Switchcraft {
         for action in config.actions {
             alertController.addAction(
                 UIAlertAction(
-                    title: "Action: \(action.title)",
+                    title: action.title,
                     style: .default,
                     handler: { [weak self] _ in
                         self?.tapped(action: action)
