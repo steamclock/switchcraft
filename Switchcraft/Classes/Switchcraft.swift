@@ -23,7 +23,7 @@ public protocol SwitchcraftDelegate: AnyObject {
 
 
 // provides a default extension, so other applications don't have to override the action handling
-extension SwitchcraftDelegate {
+public extension SwitchcraftDelegate {
     func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action) {
         // no-op, allowing this method to be optional
     }
