@@ -51,7 +51,7 @@ To get updates whenever an endpoint is selected, you've got two options:
 1. Delegation
 
     If you only need to keep track of changes to the current endpoint in a single place, this is probably the way to go.
-    Classes that want to recieve updates only need to register your `viewController` as a delegate and conform to the `SwitchcraftDelegate` protocol.
+    Classes that want to receive updates only need to register your `viewController` as a delegate and conform to the `SwitchcraftDelegate` protocol.
 
     ```
     class MyVC: UIViewController {
