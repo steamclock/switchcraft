@@ -28,9 +28,14 @@ extension Switchcraft {
             Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!)
         ],
         actions: [
-            Action(title: "Custom action 1", actionId: "custom1"),
-            Action(title: "Custom action 2", actionId: "custom2")
+            Action(title: "Custom action 1", actionId: Actions.custom1.rawValue),
+            Action(title: "Custom action 2", actionId: Actions.custom2.rawValue)
         ],
         allowCustom: true
     ))
+}
+
+enum Actions: String {
+    case custom1
+    case custom2
 }

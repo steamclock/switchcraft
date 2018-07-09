@@ -33,10 +33,16 @@ extension ReallySimpleExampleVC: SwitchcraftDelegate {
     }
 
     func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action) {
-        if action.actionId == "custom1" {
+        guard let action = Actions(rawValue: action.actionId) else {
+            return
+        }
+
+        switch action {
+        case .custom1:
             print("tapped action 1")
-        } else if action.actionId == "custom2" {
+        case .custom2:
             print("tapped action 2")
         }
+
     }
 }
