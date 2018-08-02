@@ -1,6 +1,6 @@
 {
   "name": "Switchcraft",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "summary": "Drop and go endpoint selector written in Swift.",
   "homepage": "https://github.com/steamclock/Switchcraft",
   "license": {
@@ -12,10 +12,16 @@
   },
   "source": {
     "git": "https://github.com/steamclock/Switchcraft.git",
-    "tag": "0.1.0"
+    "tag": "1.1.0"
   },
   "platforms": {
     "ios": "9.3"
   },
-  "source_files": "Switchcraft/Classes/**/*"
+  "resource_bundles": {
+    "Switchcraft": [
+      "Switchcraft/*/Assets.xcassets"
+    ]
+  },
+  "source_files": "Switchcraft/Classes/**/*",
+  "swift_version": "3.2"
 }

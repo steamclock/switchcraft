@@ -23,15 +23,15 @@ extension Switchcraft {
     static let shared = Switchcraft(config: Config(
         defaultsKey: "simpleEndpoint",
         endpoints: [
-            Endpoint(title: nil, url: URL(string: "https://google.com")!),
-            Endpoint(title: nil, url: URL(string: "http://apple.com")!),
-            Endpoint(title: "Steamclock", url: URL(string: "http://steamclock.com")!)
+            Endpoint(title: "Production", url: URL(string: "https://google.com")!),
+            Endpoint(title: "QA", url: URL(string: "http://apple.com")!),
+            Endpoint(title: "Development", url: URL(string: "http://steamclock.com")!)
         ],
-        actions: [
-            Action(title: "Custom action 1", actionId: Actions.custom1.rawValue),
-            Action(title: "Custom action 2", actionId: Actions.custom2.rawValue)
-        ],
-        allowCustom: true
+//        actions: [
+//            Action(title: "Custom action 1", actionId: Actions.custom1.rawValue),
+//            Action(title: "Custom action 2", actionId: Actions.custom2.rawValue)
+//        ],
+        allowCustom: false
     ))
 }
 
