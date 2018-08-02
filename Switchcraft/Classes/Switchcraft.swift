@@ -168,16 +168,23 @@ public class Switchcraft {
         )
 
         for endpoint in config.endpoints {
-            alertController.addAction(
-                UIAlertAction(
-                    title: endpoint.name + (endpoint == self.endpoint ? " ✔ " : ""),
-                    style: .default,
-                    handler: { [weak self] _ in
-                        self?.selected(endpoint: endpoint)
-                        viewController.dismiss(animated: false, completion: nil)
-                    }
-                )
+            let newAction = UIAlertAction(
+                title: endpoint.name,
+                style: .default,
+                handler: { [weak self] _ in
+                    self?.selected(endpoint: endpoint)
+                    viewController.dismiss(animated: false, completion: nil)
+                }
             )
+
+            if endpoint == self.endpoint,
+                    let bundleURL = Bundle(for: Switchcraft.self).url(forResource: "Switchcraft", withExtension: "bundle"),
+                    let bundle = Bundle(url: bundleURL),
+                    let checkmark = UIImage(named: "checkmark", in: bundle, compatibleWith: nil) {
+                newAction.setValue(checkmark, forKey: "image")
+            }
+
+            alertController.addAction(newAction)
         }
 
         if config.allowCustom {
