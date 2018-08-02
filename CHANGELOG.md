@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.1.0] - 2018-08-02
 ### Added
-Added this changelog
+- Added this changelog.
 
 ### Changed
 - Changed the currently selected endpoint image to be less intrusive.
+- Updated sample images.
