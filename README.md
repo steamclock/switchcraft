@@ -56,14 +56,14 @@ To get updates whenever an endpoint is selected, you've got two options:
     ```
     class MyVC: UIViewController {
         // ...
-        
+
         override func viewDidLoad() {
             super.viewDidLoad()
-            
+
             Switchcraft.delegate = self
         }
     }
-    
+
     extension MyVC: SwitchcraftDelegate {
         func switchcraft(_ switchcraft: Switchcraft, didSelectEndpoint endpoint: Endpoint) {
             // Handle your endpoint selection here
@@ -73,13 +73,13 @@ To get updates whenever an endpoint is selected, you've got two options:
 
 2. `NotificationCenter`
 
-    Endpoint selections are also broadcast to the `NotificationCenter`. 
-    
+    Endpoint selections are also broadcast to the `NotificationCenter`.
+
     ```
     NotificationCenter.default.addObserver(self, selector: #selector(endpointSelected(_:)), name: .SwitchcraftDidSelectEndpoint, object: nil)
-    
+
     ...
-    
+
     @objc private func endpointSelected(_ sender: NSNotification) {
         guard let endpoint = sender.userInfo?[Notification.Key.Endpoint] as? Endpoint else {
             return
@@ -108,7 +108,7 @@ extension Switchcraft {
 ```swift
 extension MyVC: SwitchcraftDelegate {
     ...
- 
+
     func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action)
         // Handle custom action selection here
     }
@@ -153,7 +153,7 @@ extension MyVC: SwitchcraftDelegate {
 }
 
 ```
-    
+
 ### Getting Fancy
 
 There are lots of knobs to tweak in your config. See [Config.swift](https://github.com/steamclock/switchcraft/blob/master/Switchcraft/Classes/Config.swift) for a full list.
@@ -165,8 +165,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 - iOS 9.3 or above
-- Xcode 8.2.1 or above
-- Swift 3.2 or above
+- Xcode 10 or above
+- Swift 4.2 or above
 
 ## Installation
 
