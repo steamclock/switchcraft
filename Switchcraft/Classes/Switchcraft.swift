@@ -280,7 +280,7 @@ public class Switchcraft {
             return false
         }
 
-        let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
+        let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+(:[0-9]+)?"
         let predicate = NSPredicate(format: "SELF MATCHES %@", argumentArray: [regEx])
         return predicate.evaluate(with: string)
     }
