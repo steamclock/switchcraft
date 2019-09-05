@@ -31,19 +31,26 @@ class MultipleSwitchersVC: UIViewController {
                 Endpoint(title: "Cat Cats 🐱", url: URL(string: "https://en.wikipedia.org/wiki/Cat")!)
             ]
         )
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showFirst(_:)))
+        tapGesture.numberOfTouchesRequired = 2
+
         firstSwitcher = Switchcraft(config: firstConfig)
-        firstSwitcher.attachGesture(to: self, gestureView: openFirstLabel)
+        firstSwitcher.attachGesture(to: self, gestureView: openFirstLabel, gestureRecognizer: tapGesture)
 
         let secondConfig = Config(
             defaultsKey: "secondEndpoint",
             endpoints: [
-                Endpoint(title: "Production", url: URL(string: "https://en.wikipedia.org/wiki/Dogs_(Pink_Floyd_song)")!),
-                Endpoint(title: "QA", url: URL(string: "https://en.wikipedia.org/wiki/Sun_dog")!),
-                Endpoint(title: "Development", url: URL(string: "https://en.wikipedia.org/wiki/Dog")!)
+                Endpoint(title: "Musical Doggos", url: URL(string: "https://en.wikipedia.org/wiki/Dogs_(Pink_Floyd_song)")!),
+                Endpoint(title: "Bright Doggos", url: URL(string: "https://en.wikipedia.org/wiki/Sun_dog")!),
+                Endpoint(title: "Dog Doggos 🐕", url: URL(string: "https://en.wikipedia.org/wiki/Dog")!)
             ]
         )
         secondSwitcher = Switchcraft(config: secondConfig)
-        secondSwitcher.attachGesture(to: self, gestureView: openSecondLabel)
+        secondSwitcher.attachGesture(to: self)
+    }
+
+    @objc private func show(_ gestureRecognizer: UITapGestureRecognizer) {
+        print("show")
     }
 
     @IBAction func visitTouched(_ sender: UIButton) {
@@ -52,6 +59,10 @@ class MultipleSwitchersVC: UIViewController {
         case visitSecondButton: visit(secondSwitcher.endpoint)
         default: break
         }
+    }
+
+    @objc private func showFirst(_ gestureRecognizer: UITapGestureRecognizer) {
+        firstSwitcher.display(from: self)
     }
 
     private func visit(_ endpoint: Endpoint?) {
