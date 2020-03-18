@@ -26,5 +26,4 @@ extension Notification.Name {
      * The `UserInfo` dictionary contains an Endpoint accessed with the key `Notification.Key.Endpoint`
      */
     public static let SwitchcraftDidSelectEndpoint = Notification.Name("switchcraftDidSelectEndpoint")
-
 }

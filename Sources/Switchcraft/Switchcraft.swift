@@ -12,6 +12,7 @@ import UIKit
  * Protocol allowing conforming objects to monitor endpoint selection.
  */
 public protocol SwitchcraftDelegate: AnyObject {
+
     /**
      * Called when an endpoint is selected.
      */
@@ -22,7 +23,6 @@ public protocol SwitchcraftDelegate: AnyObject {
      */
     func switchcraft(_ switchcraft: Switchcraft, didTapAction action: Action)
 }
-
 
 // provides a default extension, so other applications don't have to override the action handling
 public extension SwitchcraftDelegate {
