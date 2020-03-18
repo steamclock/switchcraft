@@ -39,6 +39,7 @@ public struct Config {
 
         return displayName + " " + versionString + "-" + buildNumber
     }
+    
     /**
      * The alert view text field placeholder.
      * Default is "Enter Value".

@@ -170,7 +170,16 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-Switchcraft is available through [CocoaPods](http://cocoapods.org). To install
+### Swift Package Manager
+Switchcraft is available through Swift Package Manager. To install it, follow these steps:
+
+1. In Xcode, click File, then Swift Package Manager, then Add Package Dependency
+2. Choose your project
+3. Enter this URL in the search bar https://github.com/steamclock/netable.git
+
+### Cocoapods
+
+Switchcraft is also available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
