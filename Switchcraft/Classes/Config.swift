@@ -81,6 +81,13 @@ public struct Config {
     public var defaultEndpointIndex: Int = 0
 
     /**
+     * Show an alert if the app requires a restart before the endpoint change will take effect.
+     * If set to true, after changing endpoints there will be an alert presented with an option to force quit the app to restart.
+     * Default is `false`.
+     */
+    public var changeRequiresRestart: Bool = false
+
+    /**
      * Create a new config with a set of endpoints and key.
      *
      * - parameter defaultsKey: The key to store the endpoint under in `UserDefaults`.

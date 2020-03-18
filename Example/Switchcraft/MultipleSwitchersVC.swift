@@ -23,7 +23,7 @@ class MultipleSwitchersVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        let firstConfig = Config(
+        var firstConfig = Config(
             defaultsKey: "firstEndpoint",
             endpoints: [
                 Endpoint(title: "Math Cats", url: URL(string: "https://en.wikipedia.org/wiki/CAT(k)_space")!),
@@ -31,6 +31,7 @@ class MultipleSwitchersVC: UIViewController {
                 Endpoint(title: "Cat Cats 🐱", url: URL(string: "https://en.wikipedia.org/wiki/Cat")!)
             ]
         )
+        firstConfig.changeRequiresRestart = true
         firstSwitcher = Switchcraft(config: firstConfig)
         firstSwitcher.attachGesture(to: self, gestureView: openFirstLabel)
 

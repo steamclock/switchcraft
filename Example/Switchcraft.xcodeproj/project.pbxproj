@@ -293,7 +293,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Switchcraft/Switchcraft.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -302,7 +302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA84A050892F11F4A58630B7 /* [CP] Check Pods Manifest.lock */ = {

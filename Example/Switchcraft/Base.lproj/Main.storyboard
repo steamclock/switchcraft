@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wot-sv-RFA">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wot-sv-RFA">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +26,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lt2-g8-OhO">
-                                <rect key="frame" x="136" y="318" width="102" height="30"/>
+                                <rect key="frame" x="136.5" y="318.5" width="102" height="30"/>
                                 <state key="normal" title="Show Selected"/>
                                 <connections>
                                     <action selector="visitEndpoint:" destination="EDb-8F-bd8" eventType="touchUpInside" id="WyX-Zb-3vG"/>
@@ -68,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJU-a5-ia0">
-                                <rect key="frame" x="36" y="318" width="303" height="30"/>
+                                <rect key="frame" x="36" y="318.5" width="303" height="30"/>
                                 <state key="normal" title="Show Selected"/>
                                 <connections>
                                     <action selector="visitEndpoint:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Ro-Ov-dGH"/>
@@ -113,10 +109,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Second Switcher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qic-JN-X9C">
-                                <rect key="frame" x="99.5" y="389.5" width="176" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Second Switcher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qic-JN-X9C">
+                                <rect key="frame" x="100" y="389.5" width="175.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BW7-Gn-Zzw">
@@ -135,24 +131,28 @@
                                     <action selector="visitTouched:" destination="gDU-v3-A4Y" eventType="touchUpInside" id="c3S-I7-7FL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open First Switcher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhf-bQ-odV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open First Switcher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhf-bQ-odV">
                                 <rect key="frame" x="112" y="122" width="151" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="mhf-bQ-odV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lVO-Co-wxp" secondAttribute="leadingMargin" id="6Eq-HT-ZdR"/>
+                            <constraint firstItem="Qic-JN-X9C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lVO-Co-wxp" secondAttribute="leadingMargin" id="C3n-TZ-NAV"/>
                             <constraint firstItem="mJe-Pe-O1U" firstAttribute="top" secondItem="Qic-JN-X9C" secondAttribute="bottom" constant="40" id="El0-tO-upR"/>
                             <constraint firstItem="BW7-Gn-Zzw" firstAttribute="centerY" secondItem="lVO-Co-wxp" secondAttribute="centerY" multiplier="0.6" id="MjR-VD-qT3"/>
                             <constraint firstItem="mJe-Pe-O1U" firstAttribute="leading" secondItem="lVO-Co-wxp" secondAttribute="leadingMargin" constant="10" id="Nqe-Uj-3XG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BW7-Gn-Zzw" secondAttribute="trailing" constant="10" id="YTb-42-VxO"/>
                             <constraint firstItem="BW7-Gn-Zzw" firstAttribute="leading" secondItem="lVO-Co-wxp" secondAttribute="leadingMargin" constant="10" id="YcQ-oB-9nz"/>
                             <constraint firstItem="Qic-JN-X9C" firstAttribute="centerY" secondItem="lVO-Co-wxp" secondAttribute="centerY" multiplier="1.2" id="coz-Kl-ZBM"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="mhf-bQ-odV" secondAttribute="trailing" id="d6j-pY-CYf"/>
                             <constraint firstItem="mhf-bQ-odV" firstAttribute="centerX" secondItem="lVO-Co-wxp" secondAttribute="centerX" id="ea2-PF-Gn6"/>
                             <constraint firstItem="Qic-JN-X9C" firstAttribute="centerX" secondItem="lVO-Co-wxp" secondAttribute="centerX" id="fOv-wl-VVm"/>
                             <constraint firstItem="BW7-Gn-Zzw" firstAttribute="top" secondItem="mhf-bQ-odV" secondAttribute="bottom" constant="40" id="rZy-iB-67l"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Qic-JN-X9C" secondAttribute="trailing" id="tDk-g8-m53"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mJe-Pe-O1U" secondAttribute="trailing" constant="10" id="toe-ae-ziq"/>
                         </constraints>
                     </view>

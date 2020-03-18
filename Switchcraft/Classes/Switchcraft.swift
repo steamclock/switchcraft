@@ -167,13 +167,21 @@ public class Switchcraft {
             preferredStyle: config.allowCustom ? .alert : .actionSheet
         )
 
+        func handleDismiss() {
+            if config.changeRequiresRestart {
+                presentRestartNotice(parentVC)
+            } else {
+                viewController.dismiss(animated: false, completion: nil)
+            }
+        }
+
         for endpoint in config.endpoints {
             let newAction = UIAlertAction(
                 title: endpoint.name,
                 style: .default,
                 handler: { [weak self] _ in
                     self?.selected(endpoint: endpoint)
-                    viewController.dismiss(animated: false, completion: nil)
+                    handleDismiss()
                 }
             )
 
@@ -198,8 +206,8 @@ public class Switchcraft {
                         return
                     }
 
-                    viewController.dismiss(animated: false, completion: nil)
                     self.selected(endpoint: Endpoint(title: "Custom URL", url: url))
+                    handleDismiss()
                 }
             )
             alertController.addAction(textFieldDoneButton!)
@@ -233,6 +241,32 @@ public class Switchcraft {
         )
 
         viewController.present(alertController, animated: true, completion: nil)
+    }
+
+    private func presentRestartNotice(_ parentVC: UIViewController) {
+        let alertController = UIAlertController(
+            title: "Restart Required",
+            message: "An endpoint change requires a restart to take effect. Force quit now?",
+            preferredStyle: .alert
+        )
+
+        alertController.addAction(
+            UIAlertAction(
+                title: "Don't Restart",
+                style: .cancel,
+                handler: { _ in parentVC.dismiss(animated: false, completion: nil) }
+            )
+        )
+
+        alertController.addAction(
+            UIAlertAction(
+                title: "Force Restart",
+                style: .destructive,
+                handler: { _ in fatalError("Restarting for endpoint change.") }
+            )
+        )
+        parentVC.dismiss(animated: true, completion: nil)
+        parentVC.present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Actions
