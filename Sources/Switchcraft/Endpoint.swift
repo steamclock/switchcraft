@@ -6,6 +6,8 @@
 //  Copyright (c) 2018 Steamclock Software. All rights reserved.
 //
 
+import Foundation
+
 /**
  * Represents an endpoint that can be chosen using the `Switchcraft` picker.
  */

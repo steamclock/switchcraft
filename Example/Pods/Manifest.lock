@@ -1,5 +1,5 @@
 PODS:
-  - Switchcraft (1.2.2)
+  - Switchcraft (1.3.0)
 
 DEPENDENCIES:
   - Switchcraft (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Switchcraft: 2cd63bd594278d0cf233139047affd894db2a5d9
+  Switchcraft: 7123398be2cc5148ec4b9d21d87bfa82acdd4c30
 
 PODFILE CHECKSUM: 4e47c647d9d1a9742b112d7e3839344f8d22be3c
 

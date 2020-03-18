@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Switchcraft'
-  s.version          = '1.2.2'
+  s.version          = '1.3.0'
   s.summary          = 'Drop and go endpoint selector written in Swift.'
   s.homepage         = 'https://github.com/steamclock/Switchcraft'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/steamclock/Switchcraft.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.3'
   s.resource_bundles = {
-  'Switchcraft' => ['Switchcraft/*/Assets.xcassets']
+  'Switchcraft' => ['Sources/Switchcraft/Assets.xcassets']
   }
-  s.source_files = 'Switchcraft/Classes/**/*'
+  s.source_files = 'Sources/**/*.swift'
   s.swift_version = '5.0'
 end

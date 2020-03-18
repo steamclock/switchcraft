@@ -33,7 +33,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Lt2-g8-OhO" firstAttribute="centerY" secondItem="ckF-qE-C3I" secondAttribute="centerY" id="7Nf-dB-pCu"/>
                             <constraint firstItem="XAU-sQ-oK6" firstAttribute="top" secondItem="elF-kB-u2Q" secondAttribute="bottom" constant="20" id="D7T-XQ-VZc"/>
@@ -64,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJU-a5-ia0">
-                                <rect key="frame" x="36" y="318.5" width="303" height="30"/>
+                                <rect key="frame" x="136.5" y="318.5" width="102" height="30"/>
                                 <state key="normal" title="Show Selected"/>
                                 <connections>
                                     <action selector="visitEndpoint:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Ro-Ov-dGH"/>
@@ -77,13 +76,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="HJU-a5-ia0" secondAttribute="trailing" constant="20" id="5YF-Ip-Ryk"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="HJU-a5-ia0" secondAttribute="trailing" id="5YF-Ip-Ryk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jeK-fJ-lJF" secondAttribute="trailing" constant="20" id="7UU-cu-ZVA"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="jeK-fJ-lJF" secondAttribute="bottom" constant="20" id="cbH-Wp-Y1A"/>
                             <constraint firstItem="HJU-a5-ia0" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="cra-dd-o5N"/>
-                            <constraint firstItem="HJU-a5-ia0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="faP-vU-ps9"/>
+                            <constraint firstItem="HJU-a5-ia0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="faP-vU-ps9"/>
                             <constraint firstItem="jeK-fJ-lJF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="jvN-Eg-Hj9"/>
                             <constraint firstItem="HJU-a5-ia0" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="x2C-w3-8Jn"/>
                         </constraints>
@@ -138,7 +136,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mhf-bQ-odV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lVO-Co-wxp" secondAttribute="leadingMargin" id="6Eq-HT-ZdR"/>
                             <constraint firstItem="Qic-JN-X9C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lVO-Co-wxp" secondAttribute="leadingMargin" id="C3n-TZ-NAV"/>
