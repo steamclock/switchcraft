@@ -9,13 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add SPM support
 - Organized and cleaned up example project
 
+
 ## [1.2.0] - 2019-01-08
 ### Changed
 - Use Swift 4.2
 
+
 ## [1.1.0] - 2018-08-02
 ### Added
 - Added this changelog
+
 
 ### Changed
 - Changed the currently selected endpoint image to be less intrusive
