@@ -44,7 +44,7 @@
 		607FACE51AFB9204008FA782 /* Switchcraft_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Switchcraft_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		708AF71E8D2722F9771F9726 /* Switchcraft.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Switchcraft.podspec; path = ../Switchcraft.podspec; sourceTree = "<group>"; };
+		708AF71E8D2722F9771F9726 /* Switchcraft.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Switchcraft.podspec; path = ../Switchcraft.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A811DE5F400C048FF246F672 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B3860FF5209A67B8001D51DE /* ReallySimpleExampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReallySimpleExampleVC.swift; sourceTree = "<group>"; };
 		B3860FF6209A67B8001D51DE /* MultipleSwitchersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSwitchersVC.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Switchcraft/Switchcraft.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -302,7 +302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Switchcraft_Example/Pods-Switchcraft_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA84A050892F11F4A58630B7 /* [CP] Check Pods Manifest.lock */ = {
