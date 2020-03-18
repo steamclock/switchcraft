@@ -6,7 +6,7 @@
 //  Copyright (c) 2018 Steamclock Software. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /**
  * Protocol allowing conforming objects to monitor endpoint selection.
