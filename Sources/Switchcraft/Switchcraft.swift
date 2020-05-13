@@ -351,7 +351,13 @@ public class Switchcraft {
      * - returns: The new `UITapGestureRecognizer`.
      */
     private func makeDefaultGestureRecognizer(forVC viewController: UIViewController) -> UITapGestureRecognizer {
-        showSwitcher = { self.display(from: viewController) }
+        let weakVC = WeakViewController(weakReference: viewController)
+
+        showSwitcher = {
+            if let weakVCReference = weakVC.weakReference {
+                self.display(from: weakVCReference)
+            }
+        }
 
         let defaultGesture = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
 
@@ -361,4 +367,8 @@ public class Switchcraft {
         defaultGesture.numberOfTouchesRequired = isSimulator ? 1 : 3
         return defaultGesture
     }
+}
+
+private struct WeakViewController {
+    weak var weakReference: UIViewController?
 }
