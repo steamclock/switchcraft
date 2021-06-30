@@ -4,19 +4,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "switchcraft",
+    name: "Switchcraft",
     products: [
         .library(
-            name: "switchcraft",
-            targets: ["switchcraft"]),
+            name: "Switchcraft",
+            targets: ["Switchcraft"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "switchcraft",
+            name: "Switchcraft",
             dependencies: []),
         .testTarget(
             name: "switchcraftTests",
-            dependencies: ["switchcraft"]),
+            dependencies: ["Switchcraft"]),
     ]
 )
