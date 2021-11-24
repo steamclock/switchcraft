@@ -1,7 +1,7 @@
 # Switchcraft
 
 [![Version](https://img.shields.io/cocoapods/v/Switchcraft.svg?style=flat)](http://cocoapods.org/pods/Switchcraft)
-[![License](https://img.shields.io/cocoapods/l/Switchcraft.svg?style=flat)](http://cocoapods.org/pods/Switchcraft)
+[![License](https://img.shields.io/cocoapods/l/Switchcraft.svg?style=flat)](https://github.com/steamclock/switchcraft/blob/master/LICENSE)
 [![Platform](https://img.shields.io/cocoapods/p/Switchcraft.svg?style=flat)](http://cocoapods.org/pods/Switchcraft)
 
 ![Switcher](demoImages/switcher.png?raw=true "Switcher")
@@ -21,7 +21,7 @@
 
 Switchcraft is a simple tool designed to make switching between different endpoints a breeze.
 
-It is designed to be dropped in to an existing project and forgotten, but also supports configuring multiple instances and lots of other neat things.
+It is designed to be dropped into an existing project and forgotten, but also supports configuring multiple instances and lots of other neat things.
 
 ## Usage
 
@@ -156,7 +156,7 @@ extension MyVC: SwitchcraftDelegate {
 
 ### Getting Fancy
 
-There are lots of knobs to tweak in your config. See [Config.swift](https://github.com/steamclock/switchcraft/blob/master/Switchcraft/Classes/Config.swift) for a full list.
+There are lots of knobs to tweak in your config. See [Config.swift](https://github.com/steamclock/switchcraft/blob/master/Sources/Switchcraft/Config.swift) for a full list.
 
 ## Example
 
@@ -175,7 +175,7 @@ Switchcraft is available through Swift Package Manager. To install it, follow th
 
 1. In Xcode, click File, then Swift Package Manager, then Add Package Dependency
 2. Choose your project
-3. Enter this URL in the search bar https://github.com/steamclock/netable.git
+3. Enter this URL in the search bar https://github.com/steamclock/switchcraft.git
 
 ### Cocoapods
 
@@ -192,4 +192,4 @@ brendan@steamclock.com
 
 ## License
 
-Switchcraft is available under the MIT license. See the [LICENSE](https://github.com/steamclock/switchcraft/blob/master/README.md) file for more info.
+Switchcraft is available under the MIT license. See the [LICENSE](https://github.com/steamclock/switchcraft/blob/master/LICENSE) file for more info.
