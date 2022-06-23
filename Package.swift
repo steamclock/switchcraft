@@ -15,8 +15,5 @@ let package = Package(
         .target(
             name: "Switchcraft",
             dependencies: []),
-        .testTarget(
-            name: "switchcraftTests",
-            dependencies: ["Switchcraft"]),
     ]
 )
