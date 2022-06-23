@@ -79,17 +79,15 @@ public class Switchcraft {
          * to reset the current selection back to the default endpoint, but rather just update the current endpoint in UserDefaults,
          * so that in case the default endpoint is different, the user does not need to repick the endpoint just because the name or the url got updated.
          */
-        if let newEndpointWithSameName = config.endpoints.first(where: { $0.name == currentEndpoint.name }) {
-            if currentEndpoint.url != newEndpointWithSameName.url {
-                selectAndCache(endpoint: newEndpointWithSameName)
-                return
-            }
+        if let newEndpointWithSameName = config.endpoints.first(where: { $0.name == currentEndpoint.name }),
+           currentEndpoint.url != newEndpointWithSameName.url {
+            selectAndCache(endpoint: newEndpointWithSameName)
+            return
         }
-        if let newEndpointWithSameUrl = config.endpoints.first(where: { $0.url == currentEndpoint.url }) {
-            if currentEndpoint.name != newEndpointWithSameUrl.name {
-                selectAndCache(endpoint: newEndpointWithSameUrl)
-                return
-            }
+        if let newEndpointWithSameUrl = config.endpoints.first(where: { $0.url == currentEndpoint.url }),
+           currentEndpoint.name != newEndpointWithSameUrl.name {
+            selectAndCache(endpoint: newEndpointWithSameUrl)
+            return
         }
         
         /*
