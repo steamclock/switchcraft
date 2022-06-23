@@ -75,9 +75,8 @@ public struct Config {
     public var actions: [Action] = []
 
     /**
-     * The index of the default endpoint in `endpoints`.
+     * The endpoint index to use in cases of new installations or irrecoverable changes.
      * Default is `0`.
-     * If this index is invalid for any reason it will default to the first endpoint.
      */
     public var defaultEndpointIndex: Int = 0
 
@@ -93,11 +92,13 @@ public struct Config {
      *
      * - parameter defaultsKey: The key to store the endpoint under in `UserDefaults`.
      * - parameter endpoints: The set of endpoints to show in the picker.
+     * - parameter defaultEndpointIndex: Which endpoint index to use in cases of new installations or irrecoverable changes. 0 if unspecified.
      * - parameter allowCustom: Whether the switcher allows entering custom endpoints.
      */
-    public init(defaultsKey: String, endpoints: [Endpoint], actions: [Action] = [], allowCustom: Bool = false) {
+    public init(defaultsKey: String, endpoints: [Endpoint], defaultEndpointIndex: Int = 0, actions: [Action] = [], allowCustom: Bool = false) {
         self.defaultsKey = defaultsKey
         self.endpoints = endpoints
+        self.defaultEndpointIndex = defaultEndpointIndex
         self.allowCustom = allowCustom
         self.actions = actions
     }
