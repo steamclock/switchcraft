@@ -52,21 +52,59 @@ public class Switchcraft {
      */
     public init(config: Config) {
         guard !config.endpoints.isEmpty else {
-            fatalError("Switchcraft.setup called with no endpoints set. You probably didn't mean to do that.")
+            fatalError("Switchcraft.init called with no endpoints set. You probably didn't mean to do that.")
+        }
+        
+        guard config.endpoints.indices.contains(config.defaultEndpointIndex) else {
+            fatalError("Switchcraft.init called with a default endpoint index that's out of bounds. You probably didn't mean to do that.")
         }
 
         self.config = config
-
-        let endpoints = config.endpoints
-        if !endpoints.indices.contains(config.defaultEndpointIndex) {
-            debugPrint("`defaultEndpointIndex` was invalid, reverting to the first endpoint. ")
-            self.config.defaultEndpointIndex = 0
+        let newEndpoints = config.endpoints
+        
+        /*
+         * Set current endpoint if it's not found (could be the first time, could be a different key).
+         * If it's a different key, which is considered as a deprecation of the current UserDefaults,
+         * then it's a full reset to the config's default endpoint,
+         * regardless of whether the list of endpoints remain the same or not.
+         */
+        guard let currentEndpoint = endpoint else {
+            selectAndCache(endpoint: newEndpoints[config.defaultEndpointIndex])
+            return
         }
-
-        // If there's no endpoint stored, store the default one
-        if endpoint == nil {
-            selected(endpoint: endpoints[config.defaultEndpointIndex])
+        
+        /*
+         * If current endpoint exists, we also need to evaluate whether the config has updated just the url or just the name for this endpoint.
+         * If only the url or the name has changed, it is essentially the same record but updated. Therefore, we don't actually want
+         * to reset the current selection back to the default endpoint, but rather just update the current endpoint in UserDefaults,
+         * so that in case the default endpoint is different, the user does not need to repick the endpoint just because the name or the url got updated.
+         */
+        if let newEndpointWithSameName = config.endpoints.first(where: { $0.name == currentEndpoint.name }) {
+            if currentEndpoint.url != newEndpointWithSameName.url {
+                selectAndCache(endpoint: newEndpointWithSameName)
+                return
+            }
         }
+        if let newEndpointWithSameUrl = config.endpoints.first(where: { $0.url == currentEndpoint.url }) {
+            if currentEndpoint.name != newEndpointWithSameUrl.name {
+                selectAndCache(endpoint: newEndpointWithSameUrl)
+                return
+            }
+        }
+        
+        /*
+         * However, if the current endpoint does not match any endpoints specified in the config (both name and url),
+         * then we do want to reset to the config's default.
+         */
+        if !config.endpoints.contains(currentEndpoint) {
+            selectAndCache(endpoint: newEndpoints[config.defaultEndpointIndex])
+        }
+        
+        /*
+         * If the code reaches this point and no selectAndCache call was made,
+         * that means the currently cached endpoint is still valid,
+         * so no needs to update the UserDefault, and no needs to reset to the config's default endpoint.
+         */
     }
 
     // MARK: - Private Declarations
@@ -149,7 +187,7 @@ public class Switchcraft {
 
         // Notify the delegate of the current endpoint after attaching to it.
         if let currentEndpoint = endpoint {
-            selected(endpoint: currentEndpoint)
+            selectAndCache(endpoint: currentEndpoint)
         }
     }
 
@@ -182,7 +220,7 @@ public class Switchcraft {
                 title: endpoint.name,
                 style: .default,
                 handler: { [weak self] _ in
-                    self?.selected(endpoint: endpoint)
+                    self?.selectAndCache(endpoint: endpoint)
                     handleDismiss()
                 }
             )
@@ -208,7 +246,7 @@ public class Switchcraft {
                         return
                     }
 
-                    self.selected(endpoint: Endpoint(title: "Custom URL", url: url))
+                    self.selectAndCache(endpoint: Endpoint(title: "Custom URL", url: url))
                     handleDismiss()
                 }
             )
@@ -326,7 +364,7 @@ public class Switchcraft {
      *
      * - parameter endpoint: The new endpoint to save.
      */
-    private func selected(endpoint: Endpoint) {
+    private func selectAndCache(endpoint: Endpoint) {
         self.endpoint = endpoint
         delegate?.switchcraft(self, didSelectEndpoint: endpoint)
         NotificationCenter.default.post(name: .SwitchcraftDidSelectEndpoint, object: self, userInfo: [Notification.Key.Endpoint: endpoint])
