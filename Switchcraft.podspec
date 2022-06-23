@@ -7,9 +7,6 @@ Pod::Spec.new do |s|
   s.author           = { 'brendan@steamclock.com' => 'brendan@steamclock.com' }
   s.source           = { :git => 'https://github.com/steamclock/Switchcraft.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.3'
-  s.resource_bundles = {
-  'Switchcraft' => ['Sources/Switchcraft/Assets.xcassets']
-  }
   s.source_files = 'Sources/**/*.swift'
   s.swift_version = '5.0'
 end
